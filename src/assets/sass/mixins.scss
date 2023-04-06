@@ -1,0 +1,22 @@
+@import "variables";
+
+@mixin font-face() {
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("@/assets/fonts/Pretendard-Regular.woff2");
+    font-style: normal;
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("@/assets/fonts/Pretendard-ExtraLight.woff2");
+    font-style: normal;
+    font-weight: 200;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("@/assets/fonts/Pretendard-ExtraBold.woff2");
+    font-style: normal;
+    font-weight: 800;
+  }
+}

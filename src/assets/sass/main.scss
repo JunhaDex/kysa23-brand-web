@@ -1,0 +1,13 @@
+@import "mixins";
+@import "variables";
+
+@include font-face();
+
+body {
+  font-family: "Source Sans Pro", serif;
+  margin: 0;
+
+  #app {
+    margin: 0 auto;
+  }
+}
