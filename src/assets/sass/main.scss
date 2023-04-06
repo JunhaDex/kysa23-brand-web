@@ -6,8 +6,27 @@
 body {
   font-family: "Source Sans Pro", serif;
   margin: 0;
+  min-width: $bp-mo;
 
   #app {
     margin: 0 auto;
+    width: 100%;
+
+    main {
+      min-height: 100vh;
+    }
+
+    @include mobile {
+
+    }
+    @include tablet {
+
+    }
+    @include desktop {
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+    }
   }
 }
