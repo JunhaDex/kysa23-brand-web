@@ -22,6 +22,7 @@ body {
 
       }
       @include desktop {
+        position: relative;
         width: calc(100% - $header-pc);
         max-width: $pc-max;
         margin: $header-pc auto 0 auto;

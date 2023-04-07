@@ -3,9 +3,9 @@
     <header>
       <img class="logo" src="https://www.gstatic.com/webp/gallery3/4_webp_a.webp" alt="site logo" />
       <nav>
-        <span>참가신청</span>
-        <span>조 편성</span>
-        <span>대회 시간표</span>
+        <RouterLink to="/register">참가신청</RouterLink>
+        <RouterLink to="/group">조 편성</RouterLink>
+        <a href="https://about.google" target="_blank">대회 시간표</a>
       </nav>
       <button class="btn btn-outline-primary">참가신청 바로가기</button>
     </header>
@@ -16,6 +16,7 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue';
+import { RouterLink } from 'vue-router';
 
 const props = defineProps<{
   layout: 'pc' | 'mo';
@@ -27,6 +28,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 5;
   width: 100vw;
   height: 87px; // padding + logo
   box-sizing: border-box;
@@ -40,18 +42,22 @@ header {
     }
     nav {
       display: flex;
-      width: 25vw;
+      width: 20vw;
       justify-content: space-between;
 
-      span {
+      a {
+        text-decoration: none;
+        color: $dark;
         display: inline-block;
         box-sizing: border-box;
+        cursor: pointer;
+
+        &:hover {
+          font-weight: 800;
+          color: $primary;
+        }
       }
     }
-  }
-  @include tablet {
-  }
-  @include mobile {
   }
 }
 </style>
