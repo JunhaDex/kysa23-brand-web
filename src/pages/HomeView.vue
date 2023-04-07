@@ -1,10 +1,50 @@
 <template>
+  <div>Home Background</div>
   <main>
-    Home View
-    <div>
-      <button @click="save" type="button">save</button>
-      <button @click="call" type="button">call</button>
-    </div>
+    <article>
+      <img src="https://www.gstatic.com/webp/gallery3/5_webp_a.webp" alt="Brand Image" />
+      <section>
+        <h1>Main Theme Message</h1>
+        <p>
+          Main Sub Title ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant
+          morbi tristique senectus et netus et malesuada fames ac turpis egestas
+        </p>
+        <button>main action</button>
+      </section>
+    </article>
+    <article>
+      <hr />
+      <h2>register information</h2>
+      <section>
+        <div>
+          <span>logo</span>
+          <span>text</span>
+        </div>
+        <div>
+          <span>logo</span>
+          <span>text</span>
+        </div>
+      </section>
+      <button>main action</button>
+    </article>
+    <article>
+      <div class="info-box">
+        <p>some text</p>
+        <button>action 1</button>
+      </div>
+      <div class="info-box">
+        <p>some text</p>
+        <button>action 2</button>
+      </div>
+      <div class="info-box">
+        <p>some text</p>
+        <button>action 3</button>
+      </div>
+      <div class="info-box">
+        <p>some text</p>
+        <button>action 4</button>
+      </div>
+    </article>
   </main>
 </template>
 <script lang="ts" setup>
