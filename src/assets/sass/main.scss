@@ -1,5 +1,6 @@
+@import "custom";
 @import "mixins";
-@import "variables";
+
 
 @include font-face();
 
@@ -14,19 +15,18 @@ body {
 
     main {
       min-height: 100vh;
-    }
+      @include mobile {
 
-    @include mobile {
-
-    }
-    @include tablet {
-
-    }
-    @include desktop {
-      main {
-        max-width: 1200px;
-        margin: 0 auto;
       }
+      @include tablet {
+
+      }
+      @include desktop {
+        width: calc(100% - $header-pc);
+        max-width: $pc-max;
+        margin: $header-pc auto 0 auto;
+      }
+
     }
   }
 }
