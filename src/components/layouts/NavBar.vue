@@ -1,6 +1,6 @@
 <template>
   <header v-if="layout === 'pc'">
-    <a class="navbar navbar-brand">
+    <a class="navbar navbar-brand" href="/">
       <img class="logo" src="https://www.gstatic.com/webp/gallery3/4_webp_a.webp" alt="site logo" />
     </a>
     <nav>
@@ -8,21 +8,25 @@
       <RouterLink to="/group">조 편성</RouterLink>
       <a href="https://about.google" target="_blank">대회 시간표</a>
     </nav>
-    <button class="btn btn-outline-primary coa">참가신청 바로가기</button>
+    <div class="coa">
+      <LightDark />
+    </div>
   </header>
   <header v-else-if="layout === 'mo'" class="navbar bg-light">
     <div class="container d-flex justify-content-between">
       <div class="menu-button">
         <img src="@/assets/icons/i-menu-light.svg" alt="" />
       </div>
-      <a class="navbar navbar-brand">
+      <a class="navbar navbar-brand" href="/">
         <img
           class="logo"
           src="https://www.gstatic.com/webp/gallery3/4_webp_a.webp"
           alt="site logo"
         />
       </a>
-      <button class="btn btn-outline-primary coa">참가신청</button>
+      <div class="coa">
+        <button class="btn btn-primary">참가신청</button>
+      </div>
     </div>
   </header>
 </template>
@@ -30,6 +34,7 @@
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import { bpDesktop } from '@/constants/ui.const';
+import LightDark from '@/components/inputs/LightDark.vue';
 
 const layout = ref<'pc' | 'mo'>('pc');
 onMounted(() => {
@@ -76,6 +81,7 @@ header {
 
   .coa {
     width: $header-item-width;
+    text-align: right;
   }
 
   .menu-button {

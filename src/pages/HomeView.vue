@@ -110,6 +110,30 @@ $section-btw: 55px;
   max-height: 1020px - $header-mo;
   padding-top: $header-mo;
 
+  .logo {
+    display: block;
+    margin: 5% auto;
+    height: 30%;
+  }
+
+  .contents {
+    height: 65%;
+    text-align: center;
+    @include mobile {
+      padding: 0 5%;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      margin-bottom: 0;
+    }
+
+    p {
+      font-size: $font-lg;
+      text-align: left;
+    }
+  }
+
   @include desktop {
     height: 1020px - $header-pc;
     margin-top: $header-pc;
@@ -119,19 +143,12 @@ $section-btw: 55px;
       transform: translateY(-50%);
       width: 55%;
       box-sizing: border-box;
+      text-align: left;
       margin-left: 5%;
-
-      h1 {
-        font-size: 3.5rem;
-        margin-bottom: 0;
-      }
-
-      p {
-        font-size: $font-lg;
-      }
     }
     .logo {
       position: absolute;
+      height: auto;
       width: 40%;
       bottom: 15%;
       right: 7%;
@@ -200,11 +217,13 @@ $section-btw: 55px;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  max-width: 1024px;
   margin: $section-btw auto;
+  @include mobile {
+    flex-direction: column;
+  }
 
   .info-box {
-    width: 40%;
+    width: 100%;
     max-width: 500px;
     height: 180px;
     margin-bottom: 55px;
