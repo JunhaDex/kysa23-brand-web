@@ -4,6 +4,19 @@
 
 @include font-face();
 
+@mixin safe-area {
+  @include mobile {
+
+  }
+  @include tablet {
+
+  }
+  @include desktop {
+    position: relative;
+    max-width: $pc-max;
+  }
+}
+
 body {
   font-family: "Source Sans Pro", serif;
   margin: 0;
@@ -15,19 +28,13 @@ body {
 
     main {
       min-height: 100vh;
-      @include mobile {
+      @include safe-area;
+      margin: $header-height auto 0 auto;
+    }
 
-      }
-      @include tablet {
-
-      }
-      @include desktop {
-        position: relative;
-        width: calc(100% - $header-pc);
-        max-width: $pc-max;
-        margin: $header-pc auto 0 auto;
-      }
-
+    footer {
+      @include safe-area;
+      margin: 0 auto;
     }
   }
 }

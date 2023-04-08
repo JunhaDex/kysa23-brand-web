@@ -11,12 +11,14 @@
 @import "~bootstrap/scss/utilities";
 // Include Parts
 @import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/containers";
 @import "~bootstrap/scss/forms";
 ////
 @import "~bootstrap/scss/utilities/api";
 
 .btn-xlg {
-  width: 300px;
-  height: 75px;
+  width: 250px;
+  height: 65px;
   font-size: $font-lg
 }

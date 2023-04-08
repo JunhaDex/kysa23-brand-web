@@ -1,45 +1,89 @@
 <template>
-  <template v-if="layout === 'pc'">
-    <header>
+  <header v-if="layout === 'pc'">
+    <a class="navbar navbar-brand">
       <img class="logo" src="https://www.gstatic.com/webp/gallery3/4_webp_a.webp" alt="site logo" />
-      <nav>
-        <RouterLink to="/register">참가신청</RouterLink>
-        <RouterLink to="/group">조 편성</RouterLink>
-        <a href="https://about.google" target="_blank">대회 시간표</a>
-      </nav>
-      <button class="btn btn-outline-primary">참가신청 바로가기</button>
-    </header>
-  </template>
-  <template v-else-if="layout === 'mo'">
-    <header></header>
-  </template>
+    </a>
+    <nav>
+      <RouterLink to="/register">참가신청</RouterLink>
+      <RouterLink to="/group">조 편성</RouterLink>
+      <a href="https://about.google" target="_blank">대회 시간표</a>
+    </nav>
+    <button class="btn btn-outline-primary coa">참가신청 바로가기</button>
+  </header>
+  <header v-else-if="layout === 'mo'" class="navbar bg-light">
+    <div class="container d-flex justify-content-between">
+      <div class="menu-button">
+        <img src="@/assets/icons/i-menu-light.svg" alt="" />
+      </div>
+      <a class="navbar navbar-brand">
+        <img
+          class="logo"
+          src="https://www.gstatic.com/webp/gallery3/4_webp_a.webp"
+          alt="site logo"
+        />
+      </a>
+      <button class="btn btn-outline-primary coa">참가신청 바로가기</button>
+    </div>
+  </header>
 </template>
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
+import { bpDesktop } from '@/constants/ui.const';
 
-const props = defineProps<{
-  layout: 'pc' | 'mo';
-}>();
-const layout = computed(() => props.layout ?? 'pc');
+const layout = ref<'pc' | 'mo'>('pc');
+onMounted(() => {
+  onResize();
+  window.addEventListener('resize', onResize);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', onResize);
+});
+
+function onResize() {
+  const width = window.innerWidth;
+  if (width <= bpDesktop) {
+    layout.value = 'mo';
+  } else {
+    layout.value = 'pc';
+  }
+}
 </script>
 <style lang="scss" scoped>
+$header-item-width: 155px;
 header {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100vw;
-  height: 87px; // padding + logo
   box-sizing: border-box;
-  padding: 16px 32px;
-  @include desktop {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+  .navbar-brand {
+    width: $header-item-width;
+
     .logo {
       height: 55px;
+      margin: 0 auto;
     }
+  }
+
+  .coa {
+    width: $header-item-width;
+  }
+
+  .menu-button {
+    display: inline-block;
+    width: $header-item-width;
+  }
+
+  @include desktop {
+    height: 87px; // padding + logo
+    padding: 16px 32px;
     nav {
       display: flex;
       width: 20vw;

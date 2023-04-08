@@ -105,7 +105,7 @@ $section-btw: 55px;
 .banner-home {
   position: relative;
   width: 100%;
-  height: 1020px - $header-pc;
+  height: 1020px - $header-height;
 
   @include desktop {
     .contents {

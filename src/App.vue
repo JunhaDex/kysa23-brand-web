@@ -5,7 +5,7 @@ import Footer from '@/components/layouts/TailInfo.vue';
 </script>
 
 <template>
-  <NavBar  layout="pc"/>
+  <NavBar />
   <RouterView />
   <Footer />
 </template>
