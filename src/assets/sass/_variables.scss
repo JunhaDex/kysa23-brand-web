@@ -13,9 +13,9 @@ $light: #F9F7F7;
 $info: #112D4E;
 
 //// Font-Sizes
-$font-xl: 3rem;
-$font-lg: 1.6rem;
-$font-md: 1.2rem;
+$font-xl: 1.8rem;
+$font-lg: 1.4rem;
+$font-md: 1rem;
 $font-sm: 0.8rem;
 $font-xs: 0.4rem;
 
@@ -24,4 +24,6 @@ $bp-mo: 576px;
 $bp-tb: 992px;
 $bp-pc: 1200px;
 $pc-max: 1920px;
-$header-height: 90px;
+$pc-min: 374px;
+$header-pc: 90px;
+$header-mo: 60px;

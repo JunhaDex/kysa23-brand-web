@@ -6,34 +6,53 @@
 
 @mixin safe-area {
   @include mobile {
-
+    margin: $header-mo auto 0 auto;
   }
   @include tablet {
+    margin: $header-mo auto 0 auto;
 
   }
   @include desktop {
-    position: relative;
     max-width: $pc-max;
+    margin: $header-pc auto 0 auto;
+  }
+}
+
+body, html {
+  font-family: "Source Sans Pro", serif;
+  height: 100vh;
+  @include mobile {
+    font-size: 14px;
+  }
+  @include tablet {
+    font-size: 18px;
+  }
+  @include desktop {
+    font-size: 22px;
   }
 }
 
 body {
-  font-family: "Source Sans Pro", serif;
+  position: relative;
   margin: 0;
-  min-width: $bp-mo;
+  min-width: $pc-min;
 
   #app {
-    margin: 0 auto;
     width: 100%;
 
     main {
       min-height: 100vh;
-      @include safe-area;
-      margin: $header-height auto 0 auto;
+      @include desktop {
+        max-width: $pc-max;
+        margin: 0 auto;
+      }
+      @include mobile {
+        min-width: $pc-min;
+
+      }
     }
 
     footer {
-      @include safe-area;
       margin: 0 auto;
     }
   }

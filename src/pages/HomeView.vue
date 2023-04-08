@@ -98,16 +98,21 @@ $section-btw: 55px;
   top: 0;
   left: 0;
   z-index: -1;
-  width: 100%;
-  height: 1020px;
+  width: 100vw;
+  height: 100vh;
+  max-height: 1020px;
 }
 
 .banner-home {
   position: relative;
   width: 100%;
-  height: 1020px - $header-height;
+  height: calc(100vh - $header-mo);
+  max-height: 1020px - $header-mo;
+  padding-top: $header-mo;
 
   @include desktop {
+    height: 1020px - $header-pc;
+    margin-top: $header-pc;
     .contents {
       position: absolute;
       top: 45%;

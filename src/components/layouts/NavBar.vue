@@ -22,7 +22,7 @@
           alt="site logo"
         />
       </a>
-      <button class="btn btn-outline-primary coa">참가신청 바로가기</button>
+      <button class="btn btn-outline-primary coa">참가신청</button>
     </div>
   </header>
 </template>
@@ -51,7 +51,7 @@ function onResize() {
 }
 </script>
 <style lang="scss" scoped>
-$header-item-width: 155px;
+$header-item-width: 25%;
 header {
   position: fixed;
   top: 0;
@@ -60,14 +60,16 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
+  width: 100%;
+  min-width: $pc-min;
+  height: $header-mo;
   box-sizing: border-box;
 
   .navbar-brand {
     width: $header-item-width;
 
     .logo {
-      height: 55px;
+      height: 35px;
       margin: 0 auto;
     }
   }
@@ -79,11 +81,18 @@ header {
   .menu-button {
     display: inline-block;
     width: $header-item-width;
+
+    img {
+      height: 35px;
+    }
   }
 
   @include desktop {
     height: 87px; // padding + logo
     padding: 16px 32px;
+    .logo {
+      height: 55px;
+    }
     nav {
       display: flex;
       width: 20vw;
