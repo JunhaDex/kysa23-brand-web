@@ -1,0 +1,9 @@
+@import 'variables';
+
+html[data-theme="light"] {
+  --color-a: #{$orange}
+}
+
+html[data-theme="dark"] {
+  --color-a: #{$primary}
+}

@@ -119,6 +119,9 @@ $section-btw: 55px;
   .contents {
     height: 65%;
     text-align: center;
+    @include tablet {
+      padding: 0 10%;
+    }
     @include mobile {
       padding: 0 5%;
     }
@@ -141,7 +144,7 @@ $section-btw: 55px;
       position: absolute;
       top: 45%;
       transform: translateY(-50%);
-      width: 55%;
+      width: 45%;
       box-sizing: border-box;
       text-align: left;
       margin-left: 5%;
@@ -149,8 +152,9 @@ $section-btw: 55px;
     .logo {
       position: absolute;
       height: auto;
+      max-width: 650px;
       width: 40%;
-      bottom: 15%;
+      bottom: 7%;
       right: 7%;
     }
   }
@@ -220,14 +224,6 @@ $section-btw: 55px;
   margin: $section-btw auto;
   @include mobile {
     flex-direction: column;
-  }
-
-  .info-box {
-    width: 100%;
-    max-width: 500px;
-    height: 180px;
-    margin-bottom: 55px;
-    background-color: $gray;
   }
 }
 </style>

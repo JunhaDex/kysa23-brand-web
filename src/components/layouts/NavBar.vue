@@ -1,5 +1,5 @@
 <template>
-  <header v-if="layout === 'pc'">
+  <header :class="`bg-${bgLevel}`" v-if="layout === 'pc'">
     <a class="navbar navbar-brand" href="/">
       <img class="logo" src="https://www.gstatic.com/webp/gallery3/4_webp_a.webp" alt="site logo" />
     </a>
@@ -37,13 +37,16 @@ import { bpDesktop } from '@/constants/ui.const';
 import LightDark from '@/components/inputs/LightDark.vue';
 
 const layout = ref<'pc' | 'mo'>('pc');
+const bgLevel = ref<number>(0);
 onMounted(() => {
   onResize();
   window.addEventListener('resize', onResize);
+  window.addEventListener('scroll', onScroll);
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', onResize);
+  window.removeEventListener('scroll', onScroll);
 });
 
 function onResize() {
@@ -54,9 +57,23 @@ function onResize() {
     layout.value = 'pc';
   }
 }
+
+function onScroll() {
+  const gradTH = 45;
+  const level = Math.floor(window.scrollY / gradTH);
+  bgLevel.value = level < 0 ? 0 : level > 5 ? 5 : level;
+  console.log(bgLevel.value);
+}
 </script>
 <style lang="scss" scoped>
 $header-item-width: 25%;
+@for $i from 1 to 6 {
+  .bg-#{$i} {
+    background: linear-gradient(rgba($light, calc(($i + 1) / 6)), 85%, rgba($light, calc($i / 6)));
+    border-bottom: 2px solid rgba($gray-dark, calc($i / 6));
+  }
+}
+
 header {
   position: fixed;
   top: 0;
@@ -98,6 +115,7 @@ header {
     padding: 16px 32px;
     .logo {
       height: 55px;
+      margin-left: 0 !important;
     }
     nav {
       display: flex;
@@ -113,7 +131,7 @@ header {
 
         &:hover {
           font-weight: 800;
-          color: $primary;
+          color: var(--color-a);
         }
       }
     }

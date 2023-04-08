@@ -65,6 +65,29 @@ body {
   @include desktop {
     width: 270px;
     height: 75px;
-
   }
+  @include tablet {
+    width: 220px;
+    height: 60px;
+  }
+}
+
+.info-box {
+  background-color: $gray;
+  box-sizing: border-box;
+  padding: 36px;
+  width: 47%;
+  height: 300px;
+  margin-bottom: 50px;
+  border-radius: 0.4rem;
+  @include tablet {
+    margin-bottom: 37px;
+    height: 270px;
+  }
+  @include mobile {
+    width: 87%;
+    margin-bottom: 26px;
+    height: 210px;
+  }
+
 }
