@@ -58,6 +58,10 @@ body {
   }
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 .btn-xlg {
   font-size: $font-lg;
   width: 170px;

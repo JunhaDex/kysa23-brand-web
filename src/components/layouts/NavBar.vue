@@ -12,10 +12,10 @@
       <LightDark />
     </div>
   </header>
-  <header v-else-if="layout === 'mo'" class="navbar bg-light">
+  <header v-else class="navbar bg-light">
     <div class="container d-flex justify-content-between">
       <div class="menu-button">
-        <img src="@/assets/icons/i-menu-light.svg" alt="" />
+        <img @click="toggleMenu" src="@/assets/icons/i-menu-light.svg" alt="" />
       </div>
       <a class="navbar navbar-brand" href="/">
         <img
@@ -29,15 +29,20 @@
       </div>
     </div>
   </header>
+  <MainMenu :is-open="isMenu" @close-menu="isMenu = false" />
 </template>
 <script lang="ts" setup>
-import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import { bpDesktop } from '@/constants/ui.const';
+import { bpDesktop, bpTablet } from '@/constants/ui.const';
 import LightDark from '@/components/inputs/LightDark.vue';
+import MainMenu from '@/components/layouts/MainMenu.vue';
+import { useUIStore } from '@/stores/UI.store';
 
-const layout = ref<'pc' | 'mo'>('pc');
+const uiStore = useUIStore();
+const layout = computed(() => uiStore.layout);
 const bgLevel = ref<number>(0);
+const isMenu = ref<boolean>(false);
 onMounted(() => {
   onResize();
   window.addEventListener('resize', onResize);
@@ -49,20 +54,25 @@ onBeforeUnmount(() => {
   window.removeEventListener('scroll', onScroll);
 });
 
+function toggleMenu() {
+  isMenu.value = !isMenu.value;
+}
+
 function onResize() {
   const width = window.innerWidth;
-  if (width <= bpDesktop) {
-    layout.value = 'mo';
+  if (width < bpTablet) {
+    uiStore.setLayout('mo');
+  } else if (width >= bpTablet && width < bpDesktop) {
+    uiStore.setLayout('tb');
   } else {
-    layout.value = 'pc';
+    uiStore.setLayout('pc');
   }
 }
 
 function onScroll() {
-  const gradTH = 45;
+  const gradTH = 65;
   const level = Math.floor(window.scrollY / gradTH);
   bgLevel.value = level < 0 ? 0 : level > 5 ? 5 : level;
-  console.log(bgLevel.value);
 }
 </script>
 <style lang="scss" scoped>
@@ -78,7 +88,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 5;
+  z-index: 6;
   display: flex;
   justify-content: space-between;
   align-items: center;

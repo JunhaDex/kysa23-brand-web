@@ -1,0 +1,21 @@
+@mixin slide-left($length, $duration) {
+  .slide-left-enter-active, .slide-left-leave-active {
+    transition: all $duration;
+  }
+
+  .slide-left-enter-from, .slide-left-leave-to {
+    transform: translateX(-$length);
+    opacity: 0;
+  }
+}
+
+@mixin slide-top($length, $duration) {
+  .slide-top-enter-active, .slide-top-leave-active {
+    transition: all $duration;
+  }
+
+  .slide-top-enter-from, .slide-top-leave-to {
+    transform: translateY(-$length);
+    opacity: 0;
+  }
+}
