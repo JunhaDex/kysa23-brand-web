@@ -76,6 +76,14 @@ body.modal-open {
   }
 }
 
+.close {
+  display: inline-block;
+  background-image: url('@/assets/icons/i-close-light.svg');
+  background-size: cover;
+  width: 36px;
+  height: 36px;
+}
+
 .info-box {
   background-color: $gray;
   box-sizing: border-box;

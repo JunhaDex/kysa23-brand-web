@@ -11,23 +11,7 @@
         <h3>2023 KYSA 전국 청년대회</h3>
       </div>
       <div class="right">
-        <div class="shortcuts">
-          <a href="https://www.churchofjesuschrist.org/?lang=eng" target="_blank">
-            <img src="@/assets/icons/i-insta-light.svg" alt="instagram link" />
-          </a>
-          <a href="https://www.churchofjesuschrist.org/?lang=eng" target="_blank">
-            <img src="@/assets/icons/i-discord-light.svg" alt="discord link" />
-          </a>
-          <a href="https://www.churchofjesuschrist.org/?lang=eng" target="_blank">
-            <img src="@/assets/icons/i-notion-light.svg" alt="notion link" />
-          </a>
-          <a href="https://www.churchofjesuschrist.org/?lang=eng" target="_blank">
-            <img src="@/assets/icons/i-web-light.svg" alt="church link" />
-          </a>
-          <a href="https://www.churchofjesuschrist.org/?lang=eng" target="_blank">
-            <img src="@/assets/icons/i-github-light.svg" alt="church link" />
-          </a>
-        </div>
+        <SocialGroup />
         <p class="contact">
           사이트 전반에 관련된 문의사항은 아래 개발자 연락처로 문의주시기 바랍니다.<br />
           <a :href="`mailto:${email}`">{{ email }}</a>
@@ -40,6 +24,8 @@
   </footer>
 </template>
 <script lang="ts" setup>
+import SocialGroup from '@/components/displays/SocialGroup.vue';
+
 const email = 'kjunha77@gmail.com';
 </script>
 <style lang="scss" scoped>
@@ -91,30 +77,7 @@ hr {
 
   .right {
     height: 100%;
-  }
-
-  .shortcuts {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    height: 100%;
-    margin: 28px 0;
-    @include mobile {
-      justify-content: center !important;
-    }
-
-    a {
-      margin-right: 32px;
-
-      &:last-child {
-        margin: 0;
-      }
-    }
-
-    img {
-      width: 32px;
-      height: 32px;
-    }
+    text-align: right;
   }
 
   .contact {

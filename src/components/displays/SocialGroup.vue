@@ -1,0 +1,43 @@
+<template>
+  <div class="shortcuts">
+    <a href="https://www.churchofjesuschrist.org/?lang=eng" target="_blank">
+      <img src="@/assets/icons/i-insta-light.svg" alt="instagram link" />
+    </a>
+    <a href="https://www.churchofjesuschrist.org/?lang=eng" target="_blank">
+      <img src="@/assets/icons/i-discord-light.svg" alt="discord link" />
+    </a>
+    <a href="https://www.churchofjesuschrist.org/?lang=eng" target="_blank">
+      <img src="@/assets/icons/i-notion-light.svg" alt="notion link" />
+    </a>
+    <a href="https://www.churchofjesuschrist.org/?lang=eng" target="_blank">
+      <img src="@/assets/icons/i-web-light.svg" alt="church link" />
+    </a>
+    <a href="https://www.churchofjesuschrist.org/?lang=eng" target="_blank">
+      <img src="@/assets/icons/i-github-light.svg" alt="church link" />
+    </a>
+  </div>
+</template>
+<style lang="scss" scoped>
+.shortcuts {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 28px 0;
+  @include mobile {
+    justify-content: center !important;
+  }
+
+  a {
+    margin-right: 32px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  img {
+    width: 32px;
+    height: 32px;
+  }
+}
+</style>

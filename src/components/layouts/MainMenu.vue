@@ -1,11 +1,32 @@
 <template>
   <transition :name="layout === 'mo' ? 'slide-top' : 'slide-left'">
-    <aside v-if="isOpen">menu</aside>
+    <aside v-if="isOpen">
+      <section class="menu-header">
+        <h2>살펴보기</h2>
+        <span class="close" @click="closeMenu"></span>
+      </section>
+      <section class="menu-items">
+        <div class="d-flex justify-content-center">
+          <LightDark />
+        </div>
+        <RouterLink to="/register" class="m-item" @click="closeMenu">참가신청</RouterLink>
+        <RouterLink to="/group" class="m-item" @click="closeMenu">조 편성</RouterLink>
+        <a href="https://about.google" target="_blank" class="m-item" @click="closeMenu">
+          대회 시간표
+        </a>
+      </section>
+      <SocialGroup />
+      <section class="menu-footer">
+        <span>2023 KYSA 전국 청년대회</span>
+      </section>
+    </aside>
   </transition>
 </template>
 <script lang="ts" setup>
 import { useUIStore } from '@/stores/UI.store';
 import { computed, watch } from 'vue';
+import LightDark from '@/components/inputs/LightDark.vue';
+import SocialGroup from '@/components/displays/SocialGroup.vue';
 
 const uiStore = useUIStore();
 const props = defineProps<{ isOpen: boolean }>();
@@ -48,13 +69,86 @@ function closeMenu() {
 aside {
   z-index: 5;
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
   top: $header-mo;
   left: 0;
   width: 380px;
   background-color: $light;
+  border-radius: 0 0 0.8rem 0;
+  padding-top: 36px;
+
+  section {
+    box-sizing: border-box;
+    padding: 0 36px 0 36px;
+  }
+
   @include mobile {
     width: 100%;
+    border-radius: 0 0 0.8rem 0.8rem;
   }
   height: calc(100% - $header-mo);
+}
+
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h2 {
+    display: inline-flex;
+    align-items: center;
+    color: $success;
+    letter-spacing: 0.2rem;
+
+    &::before {
+      display: inline-block;
+      content: '';
+      background-image: url('@/assets/icons/i-pkg-light.svg');
+      background-size: cover;
+      width: 36px;
+      height: 36px;
+      margin-right: 6px;
+    }
+  }
+}
+
+.menu-items {
+  flex: 1;
+  padding: 36px 18px 0 18px;
+  border-top: 2px solid $gray-dark;
+
+  .m-item {
+    text-decoration: none;
+    color: $dark;
+    display: block;
+    margin-top: 18px;
+    padding-left: 24px;
+    height: 65px;
+    line-height: 65px;
+    border-radius: 0.7rem;
+    font-size: $font-lg;
+    font-weight: 200;
+    letter-spacing: 0.4rem;
+
+    &:active {
+      background-color: $gray;
+      font-weight: 400;
+    }
+  }
+}
+
+.menu-footer {
+  padding: 18px 0 18px 0;
+  box-sizing: border-box;
+  text-align: center;
+  color: $gray-dark;
+  background-color: $gray;
+  border-radius: 0 0 0.8rem 0;
+  border-top: 2px solid $gray-dark;
+  @include mobile {
+    border-radius: 0 0 0.8rem 0.8rem;
+  }
 }
 </style>
