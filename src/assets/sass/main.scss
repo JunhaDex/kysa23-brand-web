@@ -41,9 +41,10 @@ body {
     width: 100%;
 
     main {
-      min-height: 100vh;
+      min-height: calc(100vh - $header-mo);
       @include desktop {
         max-width: $pc-max;
+        min-height: calc(100vh - $header-pc);
         margin: 0 auto;
       }
       @include mobile {

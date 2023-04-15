@@ -78,6 +78,9 @@ hr {
   .right {
     height: 100%;
     text-align: right;
+    @include mobile {
+      text-align: center;
+    }
   }
 
   .contact {

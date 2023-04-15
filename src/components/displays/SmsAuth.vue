@@ -1,7 +1,7 @@
 <template>
   <form>
     <div class="form-group auth-grp">
-      <label for="auth-phone">전화번호</label>
+      <label for="auth-phone">휴대폰 번호</label>
       <input
         v-model="phone"
         class="form-control"
@@ -12,7 +12,7 @@
         :disabled="checkCode"
       />
       <div v-if="!checkCode" class="btn-grp">
-        <button class="btn btn-primary" type="button" @click="sendCode">인증번호 전송</button>
+        <button class="btn btn-primary" type="button" @click="sendCode">인증번호 발송</button>
       </div>
     </div>
     <transition name="slide-top" appear>
@@ -106,6 +106,7 @@ async function confirmCode() {
 </script>
 <style lang="scss">
 @include slide-top(10px, 0.3s);
+
 .auth-grp {
   margin: 0 auto;
   max-width: 21rem;
@@ -115,10 +116,6 @@ async function confirmCode() {
     margin-top: 24px;
     text-align: center;
   }
-}
-
-.form-control {
-  box-sizing: border-box;
 }
 
 .otp-grp {
