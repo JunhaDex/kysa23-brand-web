@@ -3,7 +3,7 @@ import { getDB } from '@/providers/Firebase.provider'
 import type { Register } from '@/types/Register.type'
 
 export class RegisterService {
-  private db
+  private readonly db
 
   constructor() {
     this.db = getDB()
