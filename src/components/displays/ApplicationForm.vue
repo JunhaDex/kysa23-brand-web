@@ -83,7 +83,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { Register } from '@/types/Register.type';
+import type { Register } from '@/types/Register.type';
 import { useRegisterStore } from '@/stores/Register.store';
 
 const registerStore = useRegisterStore();

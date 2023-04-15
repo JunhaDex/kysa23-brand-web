@@ -26,7 +26,7 @@ import ApplicationForm from '@/components/displays/ApplicationForm.vue';
 import { useUIStore } from '@/stores/UI.store';
 import { computed, ref } from 'vue';
 import ToastAlert from '@/components/displays/ToastAlert.vue';
-import { ToastItem } from '@/types/UI.types';
+import type { ToastItem } from '@/types/UI.types';
 
 const uiStore = useUIStore();
 const regStage = computed(() => uiStore.regStage);
