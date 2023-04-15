@@ -12,21 +12,15 @@ export class AuthService {
     const app = getApp();
     this.auth = getAuth(app);
     this.auth.useDeviceLanguage();
-    if (window.recaptchaVerifier) {
-      window.recaptchaVerifier = new RecaptchaVerifier(
-        recaptchaCid,
-        { size: 'invisible' },
-        this.auth
-      );
-      window.recaptchaVerifier
-        .verify()
-        .then((wid: any) => {
-          console.log({ wid });
-        })
-        .catch(() => {
-          throw new Error('reCaptcha Initiation');
-        });
-    }
+
+    window.recaptchaVerifier = new RecaptchaVerifier(
+      recaptchaCid,
+      { size: 'invisible' },
+      this.auth
+    );
+    window.recaptchaVerifier.render().catch(() => {
+      window.location.reload();
+    });
   }
 
   async signInPhone(phone: string) {

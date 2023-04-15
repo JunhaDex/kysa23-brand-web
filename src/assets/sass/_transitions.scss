@@ -9,6 +9,17 @@
   }
 }
 
+@mixin slide-right($length, $duration) {
+  .slide-right-enter-active, .slide-right-leave-active {
+    transition: all $duration;
+  }
+
+  .slide-right-enter-from, .slide-right-leave-to {
+    transform: translateX($length);
+    opacity: 0;
+  }
+}
+
 @mixin slide-top($length, $duration) {
   .slide-top-enter-active, .slide-top-leave-active {
     transition: all $duration;

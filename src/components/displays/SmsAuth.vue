@@ -5,6 +5,7 @@
       <input
         v-model="phone"
         class="form-control"
+        :class="{ 'is-invalid': !checkPhone }"
         id="auth-phone"
         type="text"
         placeholder="010-1234-5432"
@@ -27,7 +28,12 @@
           :num-inputs="OTP_LENGTH"
         />
         <div class="btn-grp">
-          <button class="btn btn-primary" @click="confirmCode" :disabled="!codeFilled">
+          <button
+            class="btn btn-primary"
+            type="button"
+            @click="confirmCode"
+            :disabled="!codeFilled"
+          >
             인증번호 확인
           </button>
         </div>
@@ -39,11 +45,17 @@
 import { onMounted, ref, watch } from 'vue';
 import { AuthService } from '@/services/Auth.service';
 import OtpInput from 'vue3-otp-input';
+import type { ToastItem } from '@/types/UI.types';
+import { useRegisterStore } from '@/stores/Register.store';
+import { useUIStore } from '@/stores/UI.store';
 
 const OTP_LENGTH = 6;
-const emit = defineEmits(['verifyPhone']);
+const registerStore = useRegisterStore();
+const uiStore = useUIStore();
+const emit = defineEmits(['openToast']);
 const phone = ref<string>('');
 const code = ref<string>('');
+const checkPhone = ref<boolean>(true);
 const checkCode = ref<boolean>(false);
 const codeFilled = ref<boolean>(false);
 const otpInput = ref<InstanceType<typeof OtpInput> | null>(null);
@@ -68,15 +80,28 @@ async function sendCode() {
   if (validatePhone()) {
     const phoneNumber = `+82 ${phone.value.slice(1)}`;
     await authSvc.signInPhone(phoneNumber);
+    checkPhone.value = true;
     checkCode.value = true;
   } else {
-    console.log('incorrect number');
+    checkPhone.value = false;
+    const ti: ToastItem = {
+      type: 'danger',
+      message: '잘못된 전화번호 형식입니다.',
+    };
+    return emit('openToast', ti);
   }
 }
 
 async function confirmCode() {
   await authSvc.confirmCode(code.value);
-  return emit('verifyPhone', phone.value);
+  const info = registerStore.register;
+  info.contact = phone.value;
+  const ti: ToastItem = {
+    type: 'success',
+    message: '휴대폰 인증에 성공하였습니다!',
+  };
+  uiStore.setRegStage('form');
+  return emit('openToast', ti);
 }
 </script>
 <style lang="scss">

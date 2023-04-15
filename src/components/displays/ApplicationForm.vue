@@ -77,14 +77,16 @@
       <label>
         위 정보를 모두 확인했으며, 상기내용을 2023 전국 청년대회에 제공하는 것을 동의합니다.
       </label>
-      <button @click="submit">등록하기</button>
+      <button type="button" @click="submit">등록하기</button>
     </div>
   </form>
 </template>
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
 import { Register } from '@/types/Register.type';
+import { useRegisterStore } from '@/stores/Register.store';
 
+const registerStore = useRegisterStore();
 const register = ref<Register>({
   email: '',
   name: '',
@@ -117,8 +119,13 @@ const originString = computed(() => {
   return '';
 });
 
-async function submit() {
-  console.log('birth', birthString.value.toString());
-  console.log(register.value);
+function submit() {
+  const contact = registerStore.register.contact;
+  const regInfo = { ...register.value };
+  regInfo.dob = birthString.value;
+  regInfo.geo = originString.value;
+  regInfo.contact = contact;
+  registerStore.setRegister(regInfo);
+  console.log(registerStore.register);
 }
 </script>
