@@ -1,15 +1,15 @@
 <template>
   <div :id="recaptchaCid"></div>
   <main>
-    <!--    <article v-show="regStage === 'auth'" class="content">-->
-    <!--      <h1>참가신청 본인 인증</h1>-->
-    <!--      <hr />-->
-    <!--      <div class="form-wrap">-->
-    <!--        <SmsAuth @open-toast="setToastItem" />-->
-    <!--      </div>-->
-    <!--    </article>-->
-    <!--    <article v-show="regStage === 'form'" class="content">-->
-    <article class="content">
+    <article v-show="regStage === 'auth'" class="content">
+      <h1>참가신청 본인 인증</h1>
+      <hr />
+      <div class="form-wrap">
+        <SmsAuth @open-toast="setToastItem" />
+      </div>
+    </article>
+    <article v-show="regStage === 'form'" class="content">
+      <!--  <article class="content">  -->
       <h1>참가 신청서</h1>
       <hr />
       <ApplicationForm />

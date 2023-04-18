@@ -48,10 +48,12 @@ import OtpInput from 'vue3-otp-input';
 import type { ToastItem } from '@/types/UI.types';
 import { useRegisterStore } from '@/stores/Register.store';
 import { useUIStore } from '@/stores/UI.store';
+import { useAuthStore } from '@/stores/Auth.store';
 
 const OTP_LENGTH = 6;
 const registerStore = useRegisterStore();
 const uiStore = useUIStore();
+const authStore = useAuthStore();
 const emit = defineEmits(['openToast']);
 const phone = ref<string>('');
 const code = ref<string>('');
@@ -93,7 +95,8 @@ async function sendCode() {
 }
 
 async function confirmCode() {
-  await authSvc.confirmCode(code.value);
+  authStore.setFirebaseToken(await authSvc.confirmCode(code.value));
+  console.log(authStore.firebaseToken);
   const info = registerStore.register;
   info.contact = phone.value;
   const ti: ToastItem = {

@@ -30,7 +30,8 @@ export class AuthService {
   async confirmCode(code: string) {
     if (this.smsResult) {
       const res = await this.smsResult.confirm(code);
-      console.log(res);
+      return await res.user.getIdToken(true);
     }
+    throw new Error('No SMS Result');
   }
 }
