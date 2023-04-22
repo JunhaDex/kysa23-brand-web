@@ -13,7 +13,10 @@ const setUIState = () => {
   }
 
   function getImageName(name: string) {
-    return `i-${name}-${colorTheme.value ?? 'light'}.svg`;
+    return new URL(
+      `/src/assets/icons/i-${name}-${colorTheme.value ?? 'light'}.svg`,
+      import.meta.url
+    ).href;
   }
 
   function setBackdrop(value: boolean) {

@@ -31,14 +31,14 @@
       <h2>대회 참여정보</h2>
       <section class="dash">
         <div class="d-day">
-          <img :src="`/src/assets/icons/${calIcon}`" alt="calendar-icon" />
+          <img :src="calIcon" alt="calendar-icon" />
           <span>
             대회 당일까지<br />
             <strong>D-120</strong>
           </span>
         </div>
         <div class="count">
-          <img :src="`/src/assets/icons/${ticIcon}`" alt="calendar-icon" />
+          <img :src="ticIcon" alt="calendar-icon" />
           <span>
             참가 등록<br />
             <strong><em>+620</em> 명</strong>

@@ -15,7 +15,7 @@
   <header v-else class="navbar" :class="isDark ? 'bg-dark' : 'bg-light'">
     <div class="container d-flex justify-content-between">
       <div class="menu-button">
-        <img @click="toggleMenu" :src="`/src/assets/icons/${menuIcon}`" alt="" />
+        <img @click="toggleMenu" :src="menuIcon" alt="" />
       </div>
       <a class="navbar navbar-brand" href="/">
         <img

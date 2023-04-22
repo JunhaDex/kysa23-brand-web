@@ -1,6 +1,6 @@
 <template>
   <div class="mode-switch">
-    <img class="dark" :src="`/src/assets/icons/${sunIcon}`" alt="" />
+    <img class="dark" :src="sunIcon" alt="" />
     <div class="form-check form-switch">
       <input
         v-model="userTheme"
@@ -12,7 +12,7 @@
         @change="switchTheme"
       />
     </div>
-    <img class="dark" :src="`/src/assets/icons/${moonIcon}`" alt="" />
+    <img class="dark" :src="moonIcon" alt="" />
   </div>
 </template>
 <script lang="ts" setup>
