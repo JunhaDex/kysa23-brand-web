@@ -7,6 +7,13 @@
         src="https://www.gstatic.com/webp/gallery3/5_webp_a.webp"
         alt="Brand Image"
       />
+      <svg v-if="layout !== 'mo'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          :fill="isDark ? '#022535' : '#87A68E'"
+          fill-opacity="1"
+          d="M0,96L80,80C160,64,320,32,480,69.3C640,107,800,213,960,218.7C1120,224,1280,128,1360,80L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+        ></path>
+      </svg>
       <section class="contents">
         <h1>
           초대합니다! <br />
@@ -24,14 +31,14 @@
       <h2>대회 참여정보</h2>
       <section class="dash">
         <div class="d-day">
-          <img src="@/assets/icons/i-calendar-light.svg" alt="calendar-icon" />
+          <img :src="`/src/assets/icons/${calIcon}`" alt="calendar-icon" />
           <span>
             대회 당일까지<br />
             <strong>D-120</strong>
           </span>
         </div>
         <div class="count">
-          <img src="@/assets/icons/i-ticket-light.svg" alt="calendar-icon" />
+          <img :src="`/src/assets/icons/${ticIcon}`" alt="calendar-icon" />
           <span>
             참가 등록<br />
             <strong><em>+620</em> 명</strong>
@@ -41,7 +48,7 @@
       <button class="btn btn-lg btn-warning">참가신청 바로가기</button>
     </article>
     <article class="boxes-home">
-      <div class="info-box">
+      <div class="info-box bg-green">
         <h3>대회 일시 및 장소</h3>
         <ul>
           <li>일시: 2023년 8월 25~27일</li>
@@ -49,17 +56,17 @@
         </ul>
         <button>네이버지도 바로가기</button>
       </div>
-      <div class="info-box">
+      <div class="info-box bg-blue">
         <h3>대회 일정표 구경하기</h3>
         <p>Notion 바로가기</p>
         <button>바로가기</button>
       </div>
-      <div class="info-box">
+      <div class="info-box bg-blue">
         <h3>디스코드 참여하기</h3>
         <p>지금 바로 한국 청년독신 공식 디스코드 커뮤니티에 참여하세요!</p>
         <button>디스코드 바로가기</button>
       </div>
-      <div class="info-box">
+      <div class="info-box bg-purple">
         <h3>참가신청 바로가기</h3>
         <p>지금 바로 참가신청하고 얼리버드 할인혜택 받기!</p>
         <button class="btn btn-primary">참가신청</button>
@@ -68,26 +75,14 @@
   </main>
 </template>
 <script lang="ts" setup>
-import { RegisterService } from '@/services/Register.service';
+import { useUIStore } from '@/stores/UI.store';
+import { computed } from 'vue';
 
-async function save() {
-  const regSvc = new RegisterService();
-  await regSvc.uploadRegister({
-    email: 'foo@example-com',
-    name: 'foobar',
-    dob: '1111',
-    sex: 'f',
-    contact: '2222',
-    geo: '3333',
-    isMember: false,
-    joins: [11, 22, 33],
-  });
-}
-
-async function call() {
-  const regSvc = new RegisterService();
-  await regSvc.getRegister('foo@example-com');
-}
+const uiStore = useUIStore();
+const calIcon = computed(() => uiStore.getImageName('calendar'));
+const ticIcon = computed(() => uiStore.getImageName('ticket'));
+const isDark = computed(() => uiStore.colorTheme === 'dark');
+const layout = computed(() => uiStore.layout);
 </script>
 <style lang="scss" scoped>
 $section-btw: 55px;
@@ -110,6 +105,17 @@ $section-btw: 55px;
   max-height: 1020px - $header-mo;
   padding-top: $header-mo;
 
+  svg {
+    z-index: 1;
+    position: absolute;
+    bottom: calc($section-btw * -1);
+    left: 0;
+    @media (min-width: #{$pc-max}) {
+      left: calc((100vw - $pc-max) * -1 / 2);
+    }
+    width: 100vw;
+  }
+
   .logo {
     display: block;
     margin: 5% auto;
@@ -118,6 +124,7 @@ $section-btw: 55px;
 
   .contents {
     height: 65%;
+    z-index: 3;
     text-align: center;
     @include tablet {
       padding: 0 10%;

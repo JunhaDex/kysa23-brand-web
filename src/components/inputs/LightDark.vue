@@ -1,6 +1,6 @@
 <template>
   <div class="mode-switch">
-    <img class="dark" src="@/assets/icons/i-sun-light.svg" alt="" />
+    <img class="dark" :src="`/src/assets/icons/${sunIcon}`" alt="" />
     <div class="form-check form-switch">
       <input
         v-model="userTheme"
@@ -12,21 +12,24 @@
         @change="switchTheme"
       />
     </div>
-    <img class="dark" src="@/assets/icons/i-moon-light.svg" alt="" />
+    <img class="dark" :src="`/src/assets/icons/${moonIcon}`" alt="" />
   </div>
 </template>
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import type { ThemeType } from '@/types/UI.types';
 import { useUIStore } from '@/stores/UI.store';
 
 const uiStore = useUIStore();
 const userTheme = ref<ThemeType>();
+const sunIcon = computed(() => uiStore.getImageName('sun'));
+const moonIcon = computed(() => uiStore.getImageName('moon'));
 onMounted(() => {
   userTheme.value =
     window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
       ? 'dark'
       : 'light';
+  switchTheme();
 });
 
 function switchTheme() {

@@ -1,5 +1,5 @@
 <template>
-  <header :class="`bg-${bgLevel}`" v-if="layout === 'pc'">
+  <header :class="[`bg-${bgLevel}`, isDark ? `bg-${bgLevel}-dark` : '']" v-if="layout === 'pc'">
     <a class="navbar navbar-brand" href="/">
       <img class="logo" src="https://www.gstatic.com/webp/gallery3/4_webp_a.webp" alt="site logo" />
     </a>
@@ -12,10 +12,10 @@
       <LightDark />
     </div>
   </header>
-  <header v-else class="navbar bg-light">
+  <header v-else class="navbar" :class="isDark ? 'bg-dark' : 'bg-light'">
     <div class="container d-flex justify-content-between">
       <div class="menu-button">
-        <img @click="toggleMenu" src="@/assets/icons/i-menu-light.svg" alt="" />
+        <img @click="toggleMenu" :src="`/src/assets/icons/${menuIcon}`" alt="" />
       </div>
       <a class="navbar navbar-brand" href="/">
         <img
@@ -41,6 +41,9 @@ import { useUIStore } from '@/stores/UI.store';
 
 const uiStore = useUIStore();
 const layout = computed(() => uiStore.layout);
+const isDark = computed(() => uiStore.colorTheme === 'dark');
+const menuIcon = computed(() => uiStore.getImageName('menu'));
+
 const bgLevel = ref<number>(0);
 const isMenu = ref<boolean>(false);
 onMounted(() => {
@@ -80,6 +83,11 @@ $header-item-width: 25%;
 @for $i from 1 to 6 {
   .bg-#{$i} {
     background: linear-gradient(rgba($light, calc(($i + 1) / 6)), 85%, rgba($light, calc($i / 6)));
+
+    &-dark {
+      background: linear-gradient(rgba($dark, calc(($i + 1) / 6)), 85%, rgba($dark, calc($i / 6)));
+    }
+
     border-bottom: 2px solid rgba($gray-dark, calc($i / 6));
   }
 }
@@ -134,7 +142,7 @@ header {
 
       a {
         text-decoration: none;
-        color: $dark;
+        color: var(--text-color);
         display: inline-block;
         box-sizing: border-box;
         cursor: pointer;

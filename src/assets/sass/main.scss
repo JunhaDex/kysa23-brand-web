@@ -33,6 +33,8 @@ body, html {
 }
 
 body {
+  background-color: var(--background-color);
+  color: var(--text-color);
   position: relative;
   margin: 0;
   min-width: $pc-min;
@@ -79,14 +81,14 @@ body.modal-open {
 
 .close {
   display: inline-block;
-  background-image: url('@/assets/icons/i-close-light.svg');
-  background-size: cover;
+  @include icon(close);
   width: 36px;
   height: 36px;
 }
 
 .info-box {
-  background-color: $gray;
+  background-color: $warning;
+  border: 3px solid transparent;
   box-sizing: border-box;
   padding: 36px;
   width: 47%;
@@ -102,5 +104,19 @@ body.modal-open {
     margin-bottom: 26px;
     height: 210px;
   }
+}
 
+.bg-blue {
+  background-color: $info;
+  color: $light;
+}
+
+.bg-purple {
+  background-color: $purple;
+  color: $light;
+}
+
+.bg-green {
+  background-color: $success;
+  color: $light;
 }

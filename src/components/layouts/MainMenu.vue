@@ -3,7 +3,7 @@
     <aside v-if="isOpen">
       <section class="menu-header">
         <h2>살펴보기</h2>
-        <span class="close" @click="closeMenu"></span>
+        <span class="close" :class="{ 'close-dark': isDark }" @click="closeMenu"></span>
       </section>
       <section class="menu-items">
         <div class="d-flex justify-content-center">
@@ -32,6 +32,7 @@ const uiStore = useUIStore();
 const props = defineProps<{ isOpen: boolean }>();
 const emit = defineEmits(['closeMenu']);
 const layout = computed(() => uiStore.layout);
+const isDark = computed(() => uiStore.colorTheme === 'dark');
 
 watch(
   () => props.isOpen,
@@ -75,7 +76,7 @@ aside {
   top: $header-mo;
   left: 0;
   width: 380px;
-  background-color: $light;
+  background-color: var(--background-color);
   border-radius: 0 0 0.8rem 0;
   padding-top: 36px;
 
@@ -121,7 +122,7 @@ aside {
 
   .m-item {
     text-decoration: none;
-    color: $dark;
+    color: var(--text-color);
     display: block;
     margin-top: 18px;
     padding-left: 24px;

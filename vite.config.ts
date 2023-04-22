@@ -17,8 +17,8 @@ export default defineConfig({
       scss: {
         additionalData: `
         @import "./src/assets/sass/variables";
-        @import "./src/assets/sass/mixins";
         @import "./src/assets/sass/themes";
+        @import "./src/assets/sass/mixins";
         @import "./src/assets/sass/transitions";
         `,
       },

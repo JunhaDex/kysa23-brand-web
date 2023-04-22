@@ -38,3 +38,11 @@
     @content
   }
 }
+
+@mixin icon($name) {
+  background-image: url('@/assets/icons/i-#{$name}-light.svg');
+  background-size: cover;
+  &-dark {
+    background-image: url('@/assets/icons/i-#{$name}-dark.svg');
+  }
+}

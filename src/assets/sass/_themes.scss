@@ -1,9 +1,13 @@
 @import 'variables';
 
 html[data-theme="light"] {
-  --color-a: #{$orange}
+  --background-color: #87A68E;
+  --text-color: #000;
+  --color-a: #{$primary};
 }
 
 html[data-theme="dark"] {
-  --color-a: #{$primary}
+  --background-color: #022535;
+  --text-color: #fff;
+  --color-a: #{$warning};
 }

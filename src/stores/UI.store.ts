@@ -12,6 +12,10 @@ const setUIState = () => {
     colorTheme.value = value;
   }
 
+  function getImageName(name: string) {
+    return `i-${name}-${colorTheme.value ?? 'light'}.svg`;
+  }
+
   function setBackdrop(value: boolean) {
     isBackdrop.value = value;
   }
@@ -30,6 +34,7 @@ const setUIState = () => {
     layout,
     regStage,
     setColorTheme,
+    getImageName,
     setBackdrop,
     setLayout,
     setRegStage,
