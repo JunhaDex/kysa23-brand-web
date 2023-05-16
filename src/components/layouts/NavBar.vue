@@ -29,7 +29,13 @@
       </div>
     </div>
   </header>
-  <MainMenu :is-open="isMenu" @close-menu="isMenu = false" />
+  <MainMenu :is-open="isMenu" @close-menu="isMenu = false" @block-menu="blockMenu" />
+  <ToastAlert
+    v-if="showToast"
+    :type="toastItem.type"
+    :message="toastItem.message"
+    @close-toast="showToast = false"
+  />
 </template>
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
@@ -38,6 +44,8 @@ import { bpDesktop, bpTablet } from '@/constants/ui.const';
 import LightDark from '@/components/inputs/LightDark.vue';
 import MainMenu from '@/components/layouts/MainMenu.vue';
 import { useUIStore } from '@/stores/UI.store';
+import ToastAlert from '@/components/displays/ToastAlert.vue';
+import type { ToastItem } from '@/types/UI.types';
 
 const uiStore = useUIStore();
 const layout = computed(() => uiStore.layout);
@@ -46,6 +54,11 @@ const menuIcon = computed(() => uiStore.getImageName('menu'));
 
 const bgLevel = ref<number>(0);
 const isMenu = ref<boolean>(false);
+const showToast = ref<boolean>(false);
+const toastItem = ref<ToastItem>({
+  type: 'danger',
+  message: '',
+});
 onMounted(() => {
   onResize();
   window.addEventListener('resize', onResize);
@@ -76,6 +89,14 @@ function onScroll() {
   const gradTH = 65;
   const level = Math.floor(window.scrollY / gradTH);
   bgLevel.value = level < 0 ? 0 : level > 5 ? 5 : level;
+}
+
+function blockMenu() {
+  showToast.value = true;
+  toastItem.value = {
+    type: 'warning',
+    message: '아직 준비중인 메뉴입니다!',
+  };
 }
 </script>
 <style lang="scss" scoped>

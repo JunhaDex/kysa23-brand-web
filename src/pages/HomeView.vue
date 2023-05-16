@@ -2,12 +2,23 @@
   <div class="bg-home"></div>
   <main>
     <article class="banner-home">
+      <!--<svg v-if="layout !== 'mo'" class="frag-tl" xmlns="http://www.w3.org/2000/svg" viewBox="">-->
+      <!--  <path :fill="isDark ? '#022535' : '#87A68E'" fill-opacity="" d="" />-->
+      <!--</svg>-->
+      <!--<svg v-if="layout !== 'mo'" class="frag-tr" xmlns="http://www.w3.org/2000/svg" viewBox="">-->
+      <!--  <path :fill="isDark ? '#022535' : '#87A68E'" fill-opacity="" d="" />-->
+      <!--</svg>-->
       <img
         class="logo"
         src="https://www.gstatic.com/webp/gallery3/5_webp_a.webp"
         alt="Brand Image"
       />
-      <svg v-if="layout !== 'mo'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <svg
+        class="frag-btm"
+        v-if="layout !== 'mo'"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+      >
         <path
           :fill="isDark ? '#022535' : '#87A68E'"
           fill-opacity="1"
@@ -45,17 +56,15 @@
           </span>
         </div>
       </section>
+      <section>
+        <p class="scripture">...</p>
+      </section>
       <button class="btn btn-lg btn-warning">참가신청 바로가기</button>
+      <!--<svg v-if="layout !== 'mo'" class="frag-tr" xmlns="http://www.w3.org/2000/svg" viewBox="">-->
+      <!--  <path :fill="isDark ? '#022535' : '#87A68E'" fill-opacity="" d="" />-->
+      <!--</svg>-->
     </article>
     <article class="boxes-home">
-      <div class="info-box bg-green">
-        <h3>대회 일시 및 장소</h3>
-        <ul>
-          <li>일시: 2023년 8월 25~27일</li>
-          <li>장소: 천안상록리조트</li>
-        </ul>
-        <button>네이버지도 바로가기</button>
-      </div>
       <div class="info-box bg-blue">
         <h3>대회 일정표 구경하기</h3>
         <p>Notion 바로가기</p>
@@ -65,6 +74,14 @@
         <h3>디스코드 참여하기</h3>
         <p>지금 바로 한국 청년독신 공식 디스코드 커뮤니티에 참여하세요!</p>
         <button>디스코드 바로가기</button>
+      </div>
+      <div class="info-box bg-green">
+        <h3>대회 일시 및 장소</h3>
+        <ul>
+          <li>일시: 2023년 8월 25~27일</li>
+          <li>장소: 천안상록리조트</li>
+        </ul>
+        <button>네이버지도 바로가기</button>
       </div>
       <div class="info-box bg-purple">
         <h3>참가신청 바로가기</h3>
@@ -105,15 +122,31 @@ $section-btw: 55px;
   max-height: 1020px - $header-mo;
   padding-top: $header-mo;
 
-  svg {
+  .frag {
     z-index: 1;
     position: absolute;
-    bottom: calc($section-btw * -1);
-    left: 0;
-    @media (min-width: #{$pc-max}) {
-      left: calc((100vw - $pc-max) * -1 / 2);
-    }
     width: 100vw;
+
+    &-btm {
+      bottom: calc($section-btw * -1);
+      left: 0;
+      @media (min-width: #{$pc-max}) {
+        left: calc((100vw - $pc-max) * -1 / 2);
+      }
+    }
+
+    &-tl {
+      top: 0;
+      left: 0;
+      @media (min-width: #{$pc-max}) {
+        left: calc((100vw - $pc-max) * -1 / 2);
+      }
+    }
+
+    &-tr {
+      top: 0;
+      right: 0;
+    }
   }
 
   .logo {

@@ -82,7 +82,7 @@ async function closeToast() {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 35%;
+  width: 350px;
   height: 60px;
   border-radius: 0.325rem;
   margin: 0 auto;
