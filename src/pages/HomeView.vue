@@ -2,27 +2,45 @@
   <div class="bg-home"></div>
   <main>
     <article class="banner-home">
-      <!--<svg v-if="layout !== 'mo'" class="frag-tl" xmlns="http://www.w3.org/2000/svg" viewBox="">-->
-      <!--  <path :fill="isDark ? '#022535' : '#87A68E'" fill-opacity="" d="" />-->
-      <!--</svg>-->
-      <!--<svg v-if="layout !== 'mo'" class="frag-tr" xmlns="http://www.w3.org/2000/svg" viewBox="">-->
-      <!--  <path :fill="isDark ? '#022535' : '#87A68E'" fill-opacity="" d="" />-->
-      <!--</svg>-->
+      <svg
+        v-if="layout !== 'mo'"
+        class="frag frag-tl"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 875 210"
+      >
+        <path
+          :fill="isDark ? '#022535' : '#87A68E'"
+          fill-opacity="0.75"
+          d="M0 0H875C875 0 638.021 316.108 415.625 172.66C193.229 29.2113 0 172.66 0 172.66V0Z"
+        />
+      </svg>
+      <svg
+        v-if="layout !== 'mo'"
+        class="frag frag-tr"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 210 510"
+      >
+        <path
+          :fill="isDark ? '#022535' : '#87A68E'"
+          fill-opacity="0.75"
+          d="M210 0L210 510C210 510 210 401.5 58.4841 255C-93.0318 108.5 97.7159 5.33973e-07 97.7159 5.33973e-07L210 0Z"
+        />
+      </svg>
       <img
         class="logo"
         src="https://www.gstatic.com/webp/gallery3/5_webp_a.webp"
         alt="Brand Image"
       />
       <svg
-        class="frag-btm"
+        class="frag frag-btm"
         v-if="layout !== 'mo'"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1440 320"
+        viewBox="0 0 1920 125"
       >
         <path
-          :fill="isDark ? '#022535' : '#87A68E'"
+          :fill="isDark ? '#202020' : '#87A68E'"
           fill-opacity="1"
-          d="M0,96L80,80C160,64,320,32,480,69.3C640,107,800,213,960,218.7C1120,224,1280,128,1360,80L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+          d="M0 125C0 125 513.5 -24.7603 960 50.1197C1406.5 125 1920 0 1920 0V125L0 125Z"
         ></path>
       </svg>
       <section class="contents">
@@ -38,32 +56,35 @@
         <button class="btn btn-xlg btn-secondary">참가신청 하러가기</button>
       </section>
     </article>
-    <article class="info-home">
-      <h2>대회 참여정보</h2>
-      <section class="dash">
-        <div class="d-day">
-          <img :src="`/src/assets/icons/${calIcon}`" alt="calendar-icon" />
-          <span>
-            대회 당일까지<br />
-            <strong>D-120</strong>
-          </span>
-        </div>
-        <div class="count">
-          <img :src="`/src/assets/icons/${ticIcon}`" alt="calendar-icon" />
-          <span>
-            참가 등록<br />
-            <strong><em>+620</em> 명</strong>
-          </span>
-        </div>
-      </section>
-      <section>
-        <p class="scripture">...</p>
-      </section>
-      <button class="btn btn-lg btn-warning">참가신청 바로가기</button>
-      <!--<svg v-if="layout !== 'mo'" class="frag-tr" xmlns="http://www.w3.org/2000/svg" viewBox="">-->
-      <!--  <path :fill="isDark ? '#022535' : '#87A68E'" fill-opacity="" d="" />-->
-      <!--</svg>-->
-    </article>
+    <div class="info-wrap">
+      <article class="info-home">
+        <h2>대회 참여정보</h2>
+        <section class="dash">
+          <div class="d-day">
+            <img :src="`/src/assets/icons/${calIcon}`" alt="calendar-icon" />
+            <span>
+              대회 당일까지<br />
+              <strong>D-120</strong>
+            </span>
+          </div>
+          <div class="count">
+            <img :src="`/src/assets/icons/${ticIcon}`" alt="calendar-icon" />
+            <span>
+              참가 등록<br />
+              <strong><em>+620</em> 명</strong>
+            </span>
+          </div>
+        </section>
+        <section>
+          <p class="scripture">...</p>
+        </section>
+        <button class="btn btn-lg btn-warning">참가신청 바로가기</button>
+        <!--<svg v-if="layout !== 'mo'" class="frag-tr" xmlns="http://www.w3.org/2000/svg" viewBox="">-->
+        <!--  <path :fill="isDark ? '#022535' : '#87A68E'" fill-opacity="" d="" />-->
+        <!--</svg>-->
+      </article>
+    </div>
+
     <article class="boxes-home">
       <div class="info-box bg-blue">
         <h3>대회 일정표 구경하기</h3>
@@ -112,23 +133,23 @@ $section-btw: 55px;
   z-index: -1;
   width: 100vw;
   height: 100vh;
-  max-height: 1020px;
+  max-height: 1120px;
 }
 
 .banner-home {
   position: relative;
   width: 100%;
   height: calc(100vh - $header-mo);
-  max-height: 1020px - $header-mo;
+  max-height: 1120px - $header-mo;
   padding-top: $header-mo;
 
   .frag {
     z-index: 1;
     position: absolute;
-    width: 100vw;
 
     &-btm {
-      bottom: calc($section-btw * -1);
+      width: 100vw;
+      bottom: 0;
       left: 0;
       @media (min-width: #{$pc-max}) {
         left: calc((100vw - $pc-max) * -1 / 2);
@@ -138,6 +159,7 @@ $section-btw: 55px;
     &-tl {
       top: 0;
       left: 0;
+      width: 27vw;
       @media (min-width: #{$pc-max}) {
         left: calc((100vw - $pc-max) * -1 / 2);
       }
@@ -146,6 +168,10 @@ $section-btw: 55px;
     &-tr {
       top: 0;
       right: 0;
+      width: 8vw;
+      @media (min-width: #{$pc-max}) {
+        right: calc((100vw - $pc-max) * -1 / 2);
+      }
     }
   }
 
@@ -178,8 +204,7 @@ $section-btw: 55px;
   }
 
   @include desktop {
-    height: 1020px - $header-pc;
-    margin-top: $header-pc;
+    height: 1590px;
     .contents {
       position: absolute;
       top: 45%;
@@ -198,6 +223,9 @@ $section-btw: 55px;
       right: 7%;
     }
   }
+}
+.info-wrap {
+  background-color: #022535;
 }
 
 .info-home {

@@ -4,19 +4,19 @@
 
 @include font-face();
 
-@mixin safe-area {
-  @include mobile {
-    margin: $header-mo auto 0 auto;
-  }
-  @include tablet {
-    margin: $header-mo auto 0 auto;
-
-  }
-  @include desktop {
-    max-width: $pc-max;
-    margin: $header-pc auto 0 auto;
-  }
-}
+//@mixin safe-area {
+//  @include mobile {
+//    margin: $header-mo auto 0 auto;
+//  }
+//  @include tablet {
+//    margin: $header-mo auto 0 auto;
+//
+//  }
+//  @include desktop {
+//    max-width: $pc-max;
+//    margin: $header-pc auto 0 auto;
+//  }
+//}
 
 body, html {
   font-family: "Source Sans Pro", serif;
