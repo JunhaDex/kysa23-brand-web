@@ -114,13 +114,18 @@
 </template>
 <script lang="ts" setup>
 import { useUIStore } from '@/stores/UI.store';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 
 const uiStore = useUIStore();
 const calIcon = computed(() => uiStore.getImageName('calendar'));
 const ticIcon = computed(() => uiStore.getImageName('ticket'));
 const isDark = computed(() => uiStore.colorTheme === 'dark');
 const layout = computed(() => uiStore.layout);
+const EVENT_DAY = '2023-08-25';
+const dday = ref<string>('');
+
+// const dDayInterval = setInterval();
+function updateDday() {}
 </script>
 <style lang="scss" scoped>
 $section-btw: 55px;
@@ -224,6 +229,7 @@ $section-btw: 55px;
     }
   }
 }
+
 .info-wrap {
   background-color: #022535;
 }
