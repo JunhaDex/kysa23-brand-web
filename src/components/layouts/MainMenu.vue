@@ -30,7 +30,7 @@ import SocialGroup from '@/components/displays/SocialGroup.vue';
 
 const uiStore = useUIStore();
 const props = defineProps<{ isOpen: boolean }>();
-const emit = defineEmits(['closeMenu']);
+const emit = defineEmits(['closeMenu', 'blockMenu']);
 const layout = computed(() => uiStore.layout);
 const isDark = computed(() => uiStore.colorTheme === 'dark');
 
@@ -56,6 +56,10 @@ watch(
 
 function closeMenu() {
   return emit('closeMenu');
+}
+
+function blockMenu() {
+  return emit('blockMenu');
 }
 </script>
 <style lang="scss" scoped>

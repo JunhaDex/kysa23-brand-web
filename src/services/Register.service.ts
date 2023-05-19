@@ -1,22 +1,26 @@
-import { ref, set, get, child } from 'firebase/database'
-import { getDB } from '@/providers/Firebase.provider'
-import type { Register } from '@/types/Register.type'
+import axios from 'axios';
+import type { Register } from '@/types/Register.type';
 
 export class RegisterService {
-  private readonly db
+  private readonly register;
+  private readonly jwt;
 
-  constructor() {
-    this.db = getDB()
+  constructor(token: string) {
+    this.register = axios.create({
+      baseURL: 'https://api.kysa.page/',
+    });
+    this.jwt = token;
+    this.register.interceptors.request.use((config) => {
+      config.headers.Authorization = `Bearer ${token}`;
+      return config;
+    });
   }
 
-  async uploadRegister(register: Register) {
-    await set(ref(this.db, `test/${register.email}`), register)
+  async submitRegister(register: Register) {
+    await this.register.post('register', { ...register });
   }
 
-  async getRegister(email: string) {
-    const snapshot = await get(ref(this.db, `test/${email}`))
-    if (snapshot.exists()) {
-      console.log(snapshot.val())
-    }
+  async sendEmail() {
+    await this.register.post('register/send')
   }
 }

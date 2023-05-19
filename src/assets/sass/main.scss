@@ -4,19 +4,19 @@
 
 @include font-face();
 
-@mixin safe-area {
-  @include mobile {
-    margin: $header-mo auto 0 auto;
-  }
-  @include tablet {
-    margin: $header-mo auto 0 auto;
-
-  }
-  @include desktop {
-    max-width: $pc-max;
-    margin: $header-pc auto 0 auto;
-  }
-}
+//@mixin safe-area {
+//  @include mobile {
+//    margin: $header-mo auto 0 auto;
+//  }
+//  @include tablet {
+//    margin: $header-mo auto 0 auto;
+//
+//  }
+//  @include desktop {
+//    max-width: $pc-max;
+//    margin: $header-pc auto 0 auto;
+//  }
+//}
 
 body, html {
   font-family: "Source Sans Pro", serif;
@@ -43,15 +43,20 @@ body {
     width: 100%;
 
     main {
-      min-height: calc(100vh - $header-mo);
+      min-height: calc(100vh - $header-pc);
+      width: 100%;
+      @include mobile {
+        min-height: calc(100vh - $header-mo);
+      }
+    }
+
+    article {
       @include desktop {
         max-width: $pc-max;
-        min-height: calc(100vh - $header-pc);
         margin: 0 auto;
       }
       @include mobile {
         min-width: $pc-min;
-
       }
     }
 
