@@ -38,7 +38,7 @@
         viewBox="0 0 1920 125"
       >
         <path
-          :fill="isDark ? '#202020' : '#87A68E'"
+          :fill="isDark ? '#022535' : '#87A68E'"
           fill-opacity="1"
           d="M0 125C0 125 513.5 -24.7603 960 50.1197C1406.5 125 1920 0 1920 0V125L0 125Z"
         ></path>
@@ -53,7 +53,7 @@
           경, 다 내 하나에 릴케 별 이제 있습니다. 같이 차 이름자를 버리었습니다. 언덕 강아지, 지나고
           어머니, 별이 내일 별에도 이런 없이 까닭입니다.
         </p>
-        <button class="btn btn-xlg btn-secondary">참가신청 하러가기</button>
+        <button class="btn btn-xlg btn-warning">참가신청 바로가기</button>
       </section>
     </article>
     <div class="info-wrap">
@@ -64,7 +64,7 @@
             <img :src="`/src/assets/icons/${calIcon}`" alt="calendar-icon" />
             <span>
               대회 당일까지<br />
-              <strong>D-120</strong>
+              <strong>D-{{ dDay }}</strong>
             </span>
           </div>
           <div class="count">
@@ -76,15 +76,30 @@
           </div>
         </section>
         <section>
-          <p class="scripture">...</p>
+          <p class="scripture my-5">
+            <strong>
+              주께서 힘을 주사 <br />
+              다 그리스도의 기쁨 안에<br />
+              삼키우게 하셨더라 <br />
+            </strong>
+            -엘마서 31:38
+          </p>
         </section>
         <button class="btn btn-lg btn-warning">참가신청 바로가기</button>
-        <!--<svg v-if="layout !== 'mo'" class="frag-tr" xmlns="http://www.w3.org/2000/svg" viewBox="">-->
-        <!--  <path :fill="isDark ? '#022535' : '#87A68E'" fill-opacity="" d="" />-->
-        <!--</svg>-->
       </article>
     </div>
-
+    <svg
+      v-if="layout !== 'mo'"
+      class="frag-md-btm"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1920 125"
+    >
+      <path
+        :fill="isDark ? '#022535' : '#87A68E'"
+        fill-opacity="1"
+        d="M0 0H1920V93.717C1920 93.717 1720.5 0 1371 70.9385C1021.5 141.877 739.283 144.155 508.5 70.9385C277.717 -2.27784 0 82.0023 0 82.0023V0Z"
+      />
+    </svg>
     <article class="boxes-home">
       <div class="info-box bg-blue">
         <h3>대회 일정표 구경하기</h3>
@@ -114,7 +129,8 @@
 </template>
 <script lang="ts" setup>
 import { useUIStore } from '@/stores/UI.store';
-import { computed, ref } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { unixDate, unixNow } from '@/utils';
 
 const uiStore = useUIStore();
 const calIcon = computed(() => uiStore.getImageName('calendar'));
@@ -122,10 +138,25 @@ const ticIcon = computed(() => uiStore.getImageName('ticket'));
 const isDark = computed(() => uiStore.colorTheme === 'dark');
 const layout = computed(() => uiStore.layout);
 const EVENT_DAY = '2023-08-25';
-const dday = ref<string>('');
+const dDay = ref<string>('');
 
-// const dDayInterval = setInterval();
-function updateDday() {}
+const dDayInterval = setInterval(updateDday, 30000);
+onMounted(() => {
+  updateDday();
+});
+onBeforeUnmount(() => {
+  clearInterval(dDayInterval);
+});
+
+function updateDday() {
+  const now = unixNow();
+  const due = unixDate(EVENT_DAY);
+  if (due - now > 0) {
+    dDay.value = Math.ceil((due - now) / 86400).toString();
+  } else {
+    dDay.value = 'Today';
+  }
+}
 </script>
 <style lang="scss" scoped>
 $section-btw: 55px;
@@ -137,16 +168,13 @@ $section-btw: 55px;
   left: 0;
   z-index: -1;
   width: 100vw;
-  height: 100vh;
-  max-height: 1120px;
+  height: 1120px - $header-mo;
 }
 
 .banner-home {
   position: relative;
   width: 100%;
-  height: calc(100vh - $header-mo);
-  max-height: 1120px - $header-mo;
-  padding-top: $header-mo;
+  height: 1120px - $header-mo;
 
   .frag {
     z-index: 1;
@@ -209,7 +237,6 @@ $section-btw: 55px;
   }
 
   @include desktop {
-    height: 1590px;
     .contents {
       position: absolute;
       top: 45%;
@@ -231,23 +258,41 @@ $section-btw: 55px;
 }
 
 .info-wrap {
-  background-color: #022535;
+  background-color: var(--background-theme-color);
 }
 
 .info-home {
-  margin: $section-btw 0;
+  box-sizing: border-box;
+  padding: 3rem 0;
 
   h2 {
     font-size: $font-xl;
     text-align: center;
-    margin: 0;
+  }
+
+  p {
+    font-size: $font-lg;
+    margin: 0 auto;
+    max-width: $bp-tb;
+    text-align: center;
+    line-height: 2;
+
+    strong {
+      line-height: 1.5;
+      font-size: 3.2rem;
+    }
   }
 
   .dash {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 26px 0;
+    width: $bp-mo;
+    height: 135px;
+    margin: 0 auto;
+    border-radius: 0.75rem;
+    box-shadow: inset 3px 5px 10px #000;
+    background-color: var(--background-color);
 
     div {
       display: flex;
