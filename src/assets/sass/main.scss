@@ -92,13 +92,10 @@ body.modal-open {
 }
 
 .info-box {
-  background-color: $warning;
-  border: 3px solid transparent;
   box-sizing: border-box;
   padding: 36px;
-  width: 47%;
-  height: 300px;
-  margin-bottom: 50px;
+  width: 22%;
+  height: 600px;
   border-radius: 0.4rem;
   @include tablet {
     margin-bottom: 37px;
@@ -109,11 +106,24 @@ body.modal-open {
     margin-bottom: 26px;
     height: 210px;
   }
+
+  &-dark {
+    box-shadow: inset 3px 5px 10px #111;
+  }
+
+  &-light {
+  }
 }
 
 .bg-blue {
-  background-color: $info;
-  color: $light;
+  background-size: 200% 100%;
+  background-image: linear-gradient(to right, transparent 50%, $info 50%);
+  transition: color .3s, background-position .3s;
+
+  &:hover {
+    color: $light;
+    background-position: 100% 0;
+  }
 }
 
 .bg-purple {

@@ -82,7 +82,7 @@
               다 그리스도의 기쁨 안에<br />
               삼키우게 하셨더라 <br />
             </strong>
-            -엘마서 31:38
+            -엘마서 31:38-
           </p>
         </section>
         <button class="btn btn-lg btn-warning">참가신청 바로가기</button>
@@ -101,17 +101,17 @@
       />
     </svg>
     <article class="boxes-home">
-      <div class="info-box bg-blue">
+      <div class="info-box bg-blue" :class="`info-box-${isDark ? 'dark' : 'light'}`">
         <h3>대회 일정표 구경하기</h3>
         <p>Notion 바로가기</p>
         <button>바로가기</button>
       </div>
-      <div class="info-box bg-blue">
+      <div class="info-box" :class="`info-box-${isDark ? 'dark' : 'light'}`">
         <h3>디스코드 참여하기</h3>
         <p>지금 바로 한국 청년독신 공식 디스코드 커뮤니티에 참여하세요!</p>
         <button>디스코드 바로가기</button>
       </div>
-      <div class="info-box bg-green">
+      <div class="info-box" :class="`info-box-${isDark ? 'dark' : 'light'}`">
         <h3>대회 일시 및 장소</h3>
         <ul>
           <li>일시: 2023년 8월 25~27일</li>
@@ -119,7 +119,7 @@
         </ul>
         <button>네이버지도 바로가기</button>
       </div>
-      <div class="info-box bg-purple">
+      <div class="info-box" :class="`info-box-${isDark ? 'dark' : 'light'}`">
         <h3>참가신청 바로가기</h3>
         <p>지금 바로 참가신청하고 얼리버드 할인혜택 받기!</p>
         <button class="btn btn-primary">참가신청</button>
@@ -340,7 +340,8 @@ $section-btw: 55px;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin: $section-btw auto;
+  margin-top: $section-btw !important;
+  margin-bottom: $section-btw !important;
   @include mobile {
     flex-direction: column;
   }
