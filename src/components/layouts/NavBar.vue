@@ -4,16 +4,16 @@
       <img class="logo" src="https://www.gstatic.com/webp/gallery3/4_webp_a.webp" alt="site logo" />
     </a>
     <nav>
-      <RouterLink to="/register">참가신청</RouterLink>
-      <RouterLink to="/group">조 편성</RouterLink>
+      <RouterLink class="me-5" to="/register">참가신청</RouterLink>
+      <RouterLink class="me-5" to="/group">조 편성</RouterLink>
       <a href="https://about.google" target="_blank">대회 시간표</a>
     </nav>
     <div class="coa">
       <LightDark />
     </div>
   </header>
-  <header v-else class="navbar" :class="isDark ? 'bg-dark' : 'bg-light'">
-    <div class="container d-flex justify-content-between">
+  <header v-else class="navbar p-0" :class="isDark ? 'bg-dark' : 'bg-light'">
+    <div class="container-fluid d-flex justify-content-between">
       <div class="menu-button">
         <img @click="toggleMenu" :src="`/src/assets/icons/${menuIcon}`" alt="" />
       </div>
@@ -25,7 +25,7 @@
         />
       </a>
       <div class="coa">
-        <button class="btn btn-primary">참가신청</button>
+        <button class="btn btn-primary btn-sm">참가신청</button>
       </div>
     </div>
   </header>
@@ -103,10 +103,10 @@ function blockMenu() {
 $header-item-width: 25%;
 @for $i from 1 to 6 {
   .bg-#{$i} {
-    background: linear-gradient(rgba($light, calc(($i + 1) / 6)), 85%, rgba($light, calc($i / 6)));
+    background: rgba($light, calc(($i + 1) / 6));
 
     &-dark {
-      background: linear-gradient(rgba($dark, calc(($i + 1) / 6)), 85%, rgba($dark, calc($i / 6)));
+      background: rgba($dark, calc(($i + 1) / 6));
     }
 
     border-bottom: 2px solid rgba($gray-dark, calc($i / 6));
@@ -158,7 +158,8 @@ header {
     }
     nav {
       display: flex;
-      width: 20vw;
+      flex: 1;
+      max-width: 520px;
       justify-content: space-between;
 
       a {

@@ -102,27 +102,43 @@
     </svg>
     <article class="boxes-home">
       <div class="info-box bg-blue" :class="`info-box-${isDark ? 'dark' : 'light'}`">
-        <h3>대회 일정표 구경하기</h3>
-        <p>Notion 바로가기</p>
-        <button>바로가기</button>
+        <img src="@/assets/images/location-info.png" alt="location" />
+        <div class="box-contents">
+          <h3>대회 일시 및 장소</h3>
+          <ul>
+            <li class="cal">일시: 2023년 8월 25~27일</li>
+            <li class="loc">장소: 천안상록리조트</li>
+          </ul>
+          <a class="btn btn-success btn-sm" href="https://naver.me/x9JzNkHW" target="_blank">
+            네이버지도 바로가기
+          </a>
+        </div>
       </div>
-      <div class="info-box" :class="`info-box-${isDark ? 'dark' : 'light'}`">
-        <h3>디스코드 참여하기</h3>
-        <p>지금 바로 한국 청년독신 공식 디스코드 커뮤니티에 참여하세요!</p>
-        <button>디스코드 바로가기</button>
+      <div class="info-box bg-blue" :class="`info-box-${isDark ? 'dark' : 'light'}`">
+        <div class="box-contents">
+          <h3>대회 일정표 구경하기</h3>
+          <p>Notion 바로가기</p>
+          <button class="btn btn-primary btn-sm">바로가기</button>
+        </div>
+        <img src="@/assets/images/calendar-info.png" alt="location" />
       </div>
-      <div class="info-box" :class="`info-box-${isDark ? 'dark' : 'light'}`">
-        <h3>대회 일시 및 장소</h3>
-        <ul>
-          <li>일시: 2023년 8월 25~27일</li>
-          <li>장소: 천안상록리조트</li>
-        </ul>
-        <button>네이버지도 바로가기</button>
+      <div class="info-box bg-orange" :class="`info-box-${isDark ? 'dark' : 'light'}`">
+        <img src="@/assets/images/discord-info.png" alt="location" />
+        <div class="box-contents">
+          <h3>디스코드 참여하기</h3>
+          <p>지금 바로 한국 청년독신 공식 디스코드 커뮤니티에 참여하세요!</p>
+          <button class="btn btn-info btn-sm">디스코드 바로가기</button>
+        </div>
       </div>
-      <div class="info-box" :class="`info-box-${isDark ? 'dark' : 'light'}`">
-        <h3>참가신청 바로가기</h3>
-        <p>지금 바로 참가신청하고 얼리버드 할인혜택 받기!</p>
-        <button class="btn btn-primary">참가신청</button>
+      <div
+        class="info-box info-box-flex bg-orange"
+        :class="`info-box-${isDark ? 'dark' : 'light'}`"
+      >
+        <div class="box-contents">
+          <h3>참가신청 바로가기</h3>
+          <p>지금 바로 참가신청하고 얼리버드 할인혜택 받기!</p>
+          <button class="btn btn-warning sm">참가신청</button>
+        </div>
       </div>
     </article>
   </main>
@@ -210,7 +226,9 @@ $section-btw: 55px;
 
   .logo {
     display: block;
-    margin: 5% auto;
+    margin: $header-mo auto;
+    padding-top: 5%;
+    box-sizing: border-box;
     height: 30%;
   }
 
@@ -287,33 +305,48 @@ $section-btw: 55px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: $bp-mo;
+    width: 50%;
     height: 135px;
     margin: 0 auto;
     border-radius: 0.75rem;
     box-shadow: inset 3px 5px 10px #000;
     background-color: var(--background-color);
+    @include tablet {
+      width: 75%;
+    }
+    @include mobile {
+      width: 90%;
+    }
 
     div {
       display: flex;
       justify-content: center;
       align-items: center;
       width: 270px;
-      margin-right: 26px;
+      margin-right: 5rem;
+      @include mobile {
+        margin-right: 0;
+      }
 
       img {
-        width: 55px;
-        height: 55px;
+        width: 3.3rem;
+        height: 3.3rem;
         margin-right: 12px;
       }
 
       span {
         font-size: $font-lg;
         font-weight: 200;
+        @include mobile {
+          font-size: $font-md;
+        }
       }
 
       strong {
         font-size: $font-xl;
+        @include mobile {
+          font-size: $font-lg;
+        }
       }
     }
 
@@ -337,13 +370,14 @@ $section-btw: 55px;
 
 .boxes-home {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
   margin-top: $section-btw !important;
   margin-bottom: $section-btw !important;
-  @include mobile {
-    flex-direction: column;
+  @include desktop {
+    flex-direction: row;
   }
 }
 </style>

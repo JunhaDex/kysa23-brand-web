@@ -93,18 +93,72 @@ body.modal-open {
 
 .info-box {
   box-sizing: border-box;
-  padding: 36px;
   width: 22%;
-  height: 600px;
+  height: 720px;
   border-radius: 0.4rem;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    z-index: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    .loc:before {
+      display: inline-block;
+      content: '';
+      background-image: url('@/assets/icons/i-loc.svg');
+      background-size: cover;
+      width: 0.8rem;
+      height: 0.8rem;
+      margin-right: 6px;
+    }
+
+    .cal:before {
+      display: inline-block;
+      content: '';
+      background-image: url('@/assets/icons/i-cal.svg');
+      background-size: cover;
+      width: 0.8rem;
+      height: 0.8rem;
+      margin-right: 6px;
+    }
+  }
+
+  &-flex {
+    display: flex;
+    align-content: center;
+  }
+
+  .box-contents {
+    padding: 36px;
+    box-sizing: border-box;
+    margin: auto 0;
+    flex: 1
+  }
+
   @include tablet {
-    margin-bottom: 37px;
-    height: 270px;
+    width: 85%;
+    margin-bottom: 26px;
+    height: 350px;
+    display: flex;
+    justify-content: space-between;
+    img {
+      width: 43%;
+    }
   }
   @include mobile {
     width: 87%;
     margin-bottom: 26px;
     height: 210px;
+    display: flex;
+    justify-content: space-between;
+    img {
+      width: 40%;
+    }
   }
 
   &-dark {
@@ -112,12 +166,13 @@ body.modal-open {
   }
 
   &-light {
+    box-shadow: 3px 5px 10px #ccc;
   }
 }
 
 .bg-blue {
   background-size: 200% 100%;
-  background-image: linear-gradient(to right, transparent 50%, $info 50%);
+  background-image: linear-gradient(to right, transparent 50%, $warning 50%);
   transition: color .3s, background-position .3s;
 
   &:hover {
@@ -126,12 +181,13 @@ body.modal-open {
   }
 }
 
-.bg-purple {
-  background-color: $purple;
-  color: $light;
-}
+.bg-orange {
+  background-size: 200% 100%;
+  background-image: linear-gradient(to right, transparent 50%, $orange 50%);
+  transition: color .3s, background-position .3s;
 
-.bg-green {
-  background-color: $success;
-  color: $light;
+  &:hover {
+    color: $light;
+    background-position: 100% 0;
+  }
 }
