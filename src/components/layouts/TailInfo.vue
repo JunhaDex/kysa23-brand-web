@@ -3,11 +3,6 @@
   <footer>
     <section class="footer-contents">
       <div class="left">
-        <img
-          class="logo"
-          src="https://www.gstatic.com/webp/gallery3/4_webp_a.webp"
-          alt="site logo"
-        />
         <h3>2023 KYSA 전국 청년대회</h3>
       </div>
       <div class="right">

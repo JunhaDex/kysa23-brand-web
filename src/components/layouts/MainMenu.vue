@@ -134,8 +134,6 @@ aside {
     line-height: 65px;
     border-radius: 0.7rem;
     font-size: $font-lg;
-    font-weight: 200;
-    letter-spacing: 0.4rem;
 
     &:active {
       background-color: $gray;

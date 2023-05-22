@@ -153,7 +153,7 @@ body.modal-open {
   @include mobile {
     width: 87%;
     margin-bottom: 26px;
-    height: 210px;
+    height: 180px;
     display: flex;
     justify-content: space-between;
     img {
@@ -171,23 +171,39 @@ body.modal-open {
 }
 
 .bg-blue {
-  background-size: 200% 100%;
-  background-image: linear-gradient(to right, transparent 50%, $warning 50%);
-  transition: color .3s, background-position .3s;
-
-  &:hover {
-    color: $light;
-    background-position: 100% 0;
+  @include desktop {
+    background-size: 200% 100%;
+    background-image: linear-gradient(to right, transparent 50%, $success 50%);
+    transition: color .3s, background-position .3s;
+    &:hover {
+      color: $light;
+      background-position: 100% 0;
+    }
   }
+  @include mobile {
+    transition: background-color .3s;
+    &:hover {
+      background-color: $success;
+    }
+  }
+
 }
 
 .bg-orange {
-  background-size: 200% 100%;
-  background-image: linear-gradient(to right, transparent 50%, $orange 50%);
-  transition: color .3s, background-position .3s;
+  @include desktop {
+    background-size: 200% 100%;
+    background-image: linear-gradient(to right, transparent 50%, $orange 50%);
+    transition: color .3s, background-position .3s;
 
-  &:hover {
-    color: $light;
-    background-position: 100% 0;
+    &:hover {
+      color: $light;
+      background-position: 100% 0;
+    }
+  }
+  @include mobile {
+    transition: background-color .3s;
+    &:hover {
+      background-color: $orange;
+    }
   }
 }

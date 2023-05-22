@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-home"></div>
+  <div class="bg-home" :class="{ dark: isDark }"></div>
   <main>
     <article class="banner-home">
       <svg
@@ -49,9 +49,9 @@
           2023 청년대회
         </h1>
         <p>
-          봄이 그러나 딴은 비둘기, 지나고 봅니다. 이름과 어머니, 속의 까닭입니다. 시와 피어나듯이
-          경, 다 내 하나에 릴케 별 이제 있습니다. 같이 차 이름자를 버리었습니다. 언덕 강아지, 지나고
-          어머니, 별이 내일 별에도 이런 없이 까닭입니다.
+          2023년 청년대회를 통해, 예수 그리스도 안에서 얻는 기쁨을 찾아보세요! 웹사이트를 통해 대회
+          세부정보, 스케줄, 참가신청 등 많은 정보를 확인할 수 있습니다. 한국의 모든 청년 독신
+          성인들을 환영합니다!
         </p>
         <button class="btn btn-xlg btn-warning">참가신청 바로가기</button>
       </section>
@@ -106,10 +106,15 @@
         <div class="box-contents">
           <h3>대회 일시 및 장소</h3>
           <ul>
-            <li class="cal">일시: 2023년 8월 25~27일</li>
-            <li class="loc">장소: 천안상록리조트</li>
+            <li class="cal">8월 25~27일</li>
+            <li class="loc">천안상록리조트</li>
           </ul>
-          <a class="btn btn-success btn-sm" href="https://naver.me/x9JzNkHW" target="_blank">
+          <a
+            v-if="layout !== 'mo'"
+            class="btn btn-primary btn-sm"
+            href="https://naver.me/x9JzNkHW"
+            target="_blank"
+          >
             네이버지도 바로가기
           </a>
         </div>
@@ -118,7 +123,7 @@
         <div class="box-contents">
           <h3>대회 일정표 구경하기</h3>
           <p>Notion 바로가기</p>
-          <button class="btn btn-primary btn-sm">바로가기</button>
+          <button v-if="layout !== 'mo'" class="btn btn-primary btn-sm">바로가기</button>
         </div>
         <img src="@/assets/images/calendar-info.png" alt="location" />
       </div>
@@ -126,8 +131,8 @@
         <img src="@/assets/images/discord-info.png" alt="location" />
         <div class="box-contents">
           <h3>디스코드 참여하기</h3>
-          <p>지금 바로 한국 청년독신 공식 디스코드 커뮤니티에 참여하세요!</p>
-          <button class="btn btn-info btn-sm">디스코드 바로가기</button>
+          <p v-if="layout !== 'mo'">지금 바로 한국 청년독신 공식 디스코드 커뮤니티에 참여하세요!</p>
+          <button v-if="layout !== 'mo'" class="btn btn-info btn-sm">디스코드 바로가기</button>
         </div>
       </div>
       <div
@@ -135,9 +140,9 @@
         :class="`info-box-${isDark ? 'dark' : 'light'}`"
       >
         <div class="box-contents">
-          <h3>참가신청 바로가기</h3>
-          <p>지금 바로 참가신청하고 얼리버드 할인혜택 받기!</p>
-          <button class="btn btn-warning sm">참가신청</button>
+          <h3 :class="layout === 'mo' ? 'text-center' : ''">참가신청 바로가기</h3>
+          <p v-if="layout !== 'mo'">지금 바로 참가신청하고 얼리버드 할인혜택 받기!</p>
+          <button v-if="layout !== 'mo'" class="btn btn-warning sm">참가신청</button>
         </div>
       </div>
     </article>
@@ -179,18 +184,33 @@ $section-btw: 55px;
 
 .bg-home {
   position: absolute;
-  background-color: $gray;
+  background: linear-gradient(rgba(#ccc, 0.35), rgba(#ccc, 0.35)),
+    url('@/assets/images/bg-day.webp') no-repeat;
+  background-size: cover;
   top: 0;
   left: 0;
   z-index: -1;
   width: 100vw;
-  height: 1120px - $header-mo;
+  height: 1120px - $header-pc;
+  @include mobile {
+    height: calc(95vh - $header-mo);
+    background-position: 33% 0;
+  }
+}
+
+.dark {
+  background: linear-gradient(rgba(#000, 0.65), rgba(#000, 0.65)),
+    url('@/assets/images/bg-firework.webp') no-repeat;
+  background-size: cover;
 }
 
 .banner-home {
   position: relative;
   width: 100%;
-  height: 1120px - $header-mo;
+  height: 1120px - $header-pc;
+  @include mobile {
+    height: calc(95vh - $header-mo);
+  }
 
   .frag {
     z-index: 1;
@@ -298,6 +318,9 @@ $section-btw: 55px;
     strong {
       line-height: 1.5;
       font-size: 3.2rem;
+      @include mobile {
+        font-size: 2.3rem;
+      }
     }
   }
 

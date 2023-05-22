@@ -1,7 +1,7 @@
 <template>
   <header :class="[`bg-${bgLevel}`, isDark ? `bg-${bgLevel}-dark` : '']" v-if="layout === 'pc'">
     <a class="navbar navbar-brand" href="/">
-      <img class="logo" src="https://www.gstatic.com/webp/gallery3/4_webp_a.webp" alt="site logo" />
+      <span class="logo-txt">2023 KYSA 전국 청년대회</span>
     </a>
     <nav>
       <RouterLink class="me-5" to="/register">참가신청</RouterLink>
@@ -25,7 +25,7 @@
         />
       </a>
       <div class="coa">
-        <button class="btn btn-primary btn-sm">참가신청</button>
+        <button class="btn btn-warning btn-sm">참가신청</button>
       </div>
     </div>
   </header>
@@ -132,6 +132,11 @@ header {
     .logo {
       height: 35px;
       margin: 0 auto;
+    }
+
+    .logo-txt {
+      color: var(--text-color);
+      font-weight: 800;
     }
   }
 

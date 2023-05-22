@@ -1,18 +1,18 @@
 <template>
   <div class="shortcuts">
-    <a href="https://www.churchofjesuschrist.org/?lang=eng" target="_blank">
+    <a href="https://instagram.com/2023_kysa?igshid=MzRlODBiNWFlZA==" target="_blank">
       <img src="@/assets/icons/i-insta-light.svg" alt="instagram link" />
     </a>
-    <a href="https://www.churchofjesuschrist.org/?lang=eng" target="_blank">
+    <a href="https://www.churchofjesuschrist.org/?lang=kor" target="_blank">
       <img src="@/assets/icons/i-discord-light.svg" alt="discord link" />
     </a>
-    <a href="https://www.churchofjesuschrist.org/?lang=eng" target="_blank">
+    <a href="https://www.churchofjesuschrist.org/?lang=kor" target="_blank">
       <img src="@/assets/icons/i-notion-light.svg" alt="notion link" />
     </a>
-    <a href="https://www.churchofjesuschrist.org/?lang=eng" target="_blank">
+    <a href="https://www.churchofjesuschrist.org/?lang=kor" target="_blank">
       <img src="@/assets/icons/i-web-light.svg" alt="church link" />
     </a>
-    <a href="https://www.churchofjesuschrist.org/?lang=eng" target="_blank">
+    <a href="https://github.com/JunhaDex/kysa23-brand-web" target="_blank">
       <img src="@/assets/icons/i-github-light.svg" alt="church link" />
     </a>
   </div>
