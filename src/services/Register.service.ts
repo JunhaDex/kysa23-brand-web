@@ -21,6 +21,6 @@ export class RegisterService {
   }
 
   async sendEmail() {
-    await this.register.post('register/send')
+    await this.register.post('register/send');
   }
 }
