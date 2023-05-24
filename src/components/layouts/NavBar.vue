@@ -5,9 +5,13 @@
       <span class="logo-txt">2023 KYSA 전국 청년대회</span>
     </a>
     <nav>
-      <RouterLink class="me-5" to="/register">참가신청</RouterLink>
-      <RouterLink class="me-5" to="/group">조 편성</RouterLink>
-      <a href="https://about.google" target="_blank">대회 시간표</a>
+      <RouterLink class="me-5" to="" @click="blockMenu">참가신청</RouterLink>
+      <RouterLink class="me-5" to="" @click="blockMenu">조 편성</RouterLink>
+      <RouterLink class="me-5" to="" @click="blockMenu">대회 시간표</RouterLink>
+
+      <!--      <RouterLink class="me-5" to="/register">참가신청</RouterLink>-->
+      <!--      <RouterLink class="me-5" to="/group">조 편성</RouterLink>-->
+      <!--      <a href="https://about.google" target="_blank">대회 시간표</a>-->
     </nav>
     <div class="coa">
       <LightDark />

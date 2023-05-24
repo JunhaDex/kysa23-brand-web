@@ -92,6 +92,7 @@ async function closeToast() {
   border-radius: 0.325rem;
   margin: 0 auto;
   @include desktop {
+    width: 550px;
     margin-right: 36px !important;
   }
 
