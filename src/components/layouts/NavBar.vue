@@ -1,4 +1,5 @@
 <template>
+  <div class="top-noti">🎉 참가신청기간은 6/18~8/11 입니다. 곧 만나요! 🎉</div>
   <header :class="[`bg-${bgLevel}`, isDark ? `bg-${bgLevel}-dark` : '']" v-if="layout === 'pc'">
     <a class="navbar navbar-brand" href="/">
       <span class="logo-txt">2023 KYSA 전국 청년대회</span>
@@ -18,14 +19,10 @@
         <img @click="toggleMenu" :src="menuIcon" alt="" />
       </div>
       <a class="navbar navbar-brand" href="/">
-        <img
-          class="logo"
-          src="https://www.gstatic.com/webp/gallery3/4_webp_a.webp"
-          alt="site logo"
-        />
+        <span class="logo-txt">KYSA2023</span>
       </a>
       <div class="coa">
-        <button class="btn btn-warning btn-sm">참가신청</button>
+        <button class="btn btn-warning btn-sm" @click="blockMenu">참가신청</button>
       </div>
     </div>
   </header>
@@ -94,7 +91,7 @@ function onScroll() {
 function blockMenu() {
   showToast.value = true;
   toastItem.value = {
-    type: 'warning',
+    type: 'info',
     message: '아직 준비중인 메뉴입니다!',
   };
 }
@@ -113,6 +110,23 @@ $header-item-width: 25%;
   }
 }
 
+.top-noti {
+  position: fixed;
+  width: 100%;
+  z-index: 6;
+  text-align: center;
+  background-color: $info;
+  box-sizing: border-box;
+  @include mobile {
+    top: 50px;
+  }
+}
+
+.logo-txt {
+  color: var(--text-color);
+  font-weight: 800;
+}
+
 header {
   position: fixed;
   top: 0;
@@ -125,6 +139,9 @@ header {
   min-width: $pc-min;
   height: $header-mo;
   box-sizing: border-box;
+  @include desktop {
+    top: 29px;
+  }
 
   .navbar-brand {
     width: $header-item-width;
@@ -132,11 +149,6 @@ header {
     .logo {
       height: 35px;
       margin: 0 auto;
-    }
-
-    .logo-txt {
-      color: var(--text-color);
-      font-weight: 800;
     }
   }
 

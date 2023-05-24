@@ -9,11 +9,10 @@
         <div class="d-flex justify-content-center">
           <LightDark />
         </div>
-        <RouterLink to="/register" class="m-item" @click="closeMenu">참가신청</RouterLink>
-        <RouterLink to="/group" class="m-item" @click="closeMenu">조 편성</RouterLink>
-        <a href="https://about.google" target="_blank" class="m-item" @click="closeMenu">
-          대회 시간표
-        </a>
+        <RouterLink to="" class="m-item" @click="blockMenu">참가신청</RouterLink>
+        <RouterLink to="" class="m-item" @click="blockMenu">조 편성</RouterLink>
+        <RouterLink to="" class="m-item" @click="blockMenu">대회 시간표</RouterLink>
+<!--        <a href="" target="_blank" class="m-item" @click="blockMenu"> 대회 시간표 </a>-->
       </section>
       <SocialGroup />
       <section class="menu-footer">

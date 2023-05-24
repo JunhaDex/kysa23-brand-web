@@ -26,11 +26,7 @@
           d="M210 0L210 510C210 510 210 401.5 58.4841 255C-93.0318 108.5 97.7159 5.33973e-07 97.7159 5.33973e-07L210 0Z"
         />
       </svg>
-      <!--      <img-->
-      <!--        class="logo"-->
-      <!--        src="https://www.gstatic.com/webp/gallery3/5_webp_a.webp"-->
-      <!--        alt="Brand Image"-->
-      <!--      />-->
+      <img v-if="!isDark" class="logo" src="@/assets/images/bg-obj-day.png" alt="Brand Image" />
       <svg
         class="frag frag-btm"
         v-if="layout !== 'mo'"
@@ -82,7 +78,7 @@
               다 그리스도의 기쁨 안에<br />
               삼키우게 하셨더라 <br />
             </strong>
-            -엘마서 31:38-
+            -앨마서 31:38-
           </p>
         </section>
         <button class="btn btn-lg btn-warning">참가신청 바로가기</button>
@@ -104,7 +100,7 @@
       <div class="info-box bg-blue" :class="`info-box-${isDark ? 'dark' : 'light'}`">
         <img src="@/assets/images/location-info.png" alt="location" />
         <div class="box-contents">
-          <h3>대회 일시 및 장소</h3>
+          <h3 v-if="layout !== 'mo'">대회 일시 및 장소</h3>
           <ul>
             <li class="cal">8월 25~27일</li>
             <li class="loc">천안상록리조트</li>
@@ -121,8 +117,12 @@
       </div>
       <div class="info-box bg-blue" :class="`info-box-${isDark ? 'dark' : 'light'}`">
         <div class="box-contents">
-          <h3>대회 일정표 구경하기</h3>
-          <p>Notion 바로가기</p>
+          <h3 v-if="layout === 'mo'">
+            대회 일정표 <br />
+            구경하기
+          </h3>
+          <h3 v-else>대회 일정표 구경하기</h3>
+          <p v-if="layout !== 'mo'">Notion 바로가기</p>
           <button v-if="layout !== 'mo'" class="btn btn-primary btn-sm">바로가기</button>
         </div>
         <img src="@/assets/images/calendar-info.png" alt="location" />
@@ -184,8 +184,8 @@ $section-btw: 55px;
 
 .bg-home {
   position: absolute;
-  background: linear-gradient(rgba(#ccc, 0.35), rgba(#ccc, 0.35)),
-    url('@/assets/images/bg-hmg-day.png') no-repeat;
+  background-image: url('@/assets/images/bg-hmg-day.png');
+  background-position: left bottom;
   background-size: cover;
   top: 0;
   left: 0;
@@ -193,15 +193,21 @@ $section-btw: 55px;
   width: 100vw;
   height: 1120px - $header-pc;
   @include mobile {
+    background-image: url('@/assets/images/bg-hmg-day-mo.webp');
     height: calc(95vh - $header-mo);
     background-position: 33% 0;
   }
 }
 
 .dark {
-  background: linear-gradient(rgba(#000, 0.65), rgba(#000, 0.65)),
-    url('@/assets/images/bg-hmg-night.webp') no-repeat;
+  background-image: linear-gradient(rgba(#000, 0.2), rgba(#000, 0.2)),
+    url('@/assets/images/bg-hmg-night.webp');
+  background-repeat: no-repeat;
   background-size: cover;
+  @include mobile {
+    background-image: linear-gradient(rgba(#000, 0.2), rgba(#000, 0.2)),
+      url('@/assets/images/bg-hmg-night-mo.webp');
+  }
 }
 
 .banner-home {

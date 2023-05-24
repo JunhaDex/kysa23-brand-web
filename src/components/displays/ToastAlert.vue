@@ -76,6 +76,11 @@ async function closeToast() {
   }
 }
 
+.info {
+  background-image: linear-gradient(135deg, hsla(192, 48%, 56%, 1) 0%, hsla(149, 59%, 74%, 1) 100%);
+  border: 2px solid $info;
+}
+
 .toast-contents {
   padding: 0 0.725rem;
   box-sizing: border-box;
