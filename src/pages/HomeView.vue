@@ -26,11 +26,11 @@
           d="M210 0L210 510C210 510 210 401.5 58.4841 255C-93.0318 108.5 97.7159 5.33973e-07 97.7159 5.33973e-07L210 0Z"
         />
       </svg>
-      <img
-        class="logo"
-        src="https://www.gstatic.com/webp/gallery3/5_webp_a.webp"
-        alt="Brand Image"
-      />
+      <!--      <img-->
+      <!--        class="logo"-->
+      <!--        src="https://www.gstatic.com/webp/gallery3/5_webp_a.webp"-->
+      <!--        alt="Brand Image"-->
+      <!--      />-->
       <svg
         class="frag frag-btm"
         v-if="layout !== 'mo'"
@@ -185,7 +185,7 @@ $section-btw: 55px;
 .bg-home {
   position: absolute;
   background: linear-gradient(rgba(#ccc, 0.35), rgba(#ccc, 0.35)),
-    url('@/assets/images/bg-day.webp') no-repeat;
+    url('@/assets/images/bg-hmg-day.png') no-repeat;
   background-size: cover;
   top: 0;
   left: 0;
@@ -200,7 +200,7 @@ $section-btw: 55px;
 
 .dark {
   background: linear-gradient(rgba(#000, 0.65), rgba(#000, 0.65)),
-    url('@/assets/images/bg-firework.webp') no-repeat;
+    url('@/assets/images/bg-hmg-night.webp') no-repeat;
   background-size: cover;
 }
 
