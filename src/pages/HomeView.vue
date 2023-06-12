@@ -49,7 +49,7 @@
           세부정보, 스케줄, 참가신청 등 많은 정보를 확인할 수 있습니다. 한국의 모든 청년 독신
           성인들을 환영합니다!
         </p>
-        <button class="btn btn-xlg btn-warning">참가신청 바로가기</button>
+        <button class="btn btn-xlg btn-warning" @click="goForm">참가신청 바로가기</button>
       </section>
     </article>
     <div class="info-wrap">
@@ -81,7 +81,7 @@
             -앨마서 31:38-
           </p>
         </section>
-        <button class="btn btn-lg btn-warning">참가신청 바로가기</button>
+        <button class="btn btn-lg btn-warning" @click="goForm">참가신청 바로가기</button>
       </article>
     </div>
     <svg
@@ -142,7 +142,9 @@
         <div class="box-contents">
           <h3 :class="layout === 'mo' ? 'text-center' : ''">참가신청 바로가기</h3>
           <p v-if="layout !== 'mo'">지금 바로 참가신청하고 얼리버드 할인혜택 받기!</p>
-          <button v-if="layout !== 'mo'" class="btn btn-warning sm">참가신청</button>
+          <button v-if="layout !== 'mo'" class="btn btn-warning sm" @click="goForm">
+            참가신청
+          </button>
         </div>
       </div>
     </article>
@@ -177,6 +179,10 @@ function updateDday() {
   } else {
     dDay.value = 'Today';
   }
+}
+
+function goForm() {
+  window.open('https://forms.gle/RCRMoeGBMFtAXHTR9', '_blank');
 }
 </script>
 <style lang="scss" scoped>

@@ -16,11 +16,6 @@ const router = createRouter({
       component: GuideView,
     },
     {
-      path: '/register',
-      name: 'register',
-      component: () => import('@/pages/RegisterView.vue'),
-    },
-    {
       path: '/group',
       name: 'group',
       component: () => import('@/pages/GroupView.vue'),
