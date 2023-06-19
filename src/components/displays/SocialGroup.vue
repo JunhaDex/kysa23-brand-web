@@ -6,7 +6,10 @@
     <a href="https://www.churchofjesuschrist.org/?lang=kor" target="_blank">
       <img src="@/assets/icons/i-discord-light.svg" alt="discord link" />
     </a>
-    <a href="https://www.churchofjesuschrist.org/?lang=kor" target="_blank">
+    <a
+      href="https://kysa23-finance.notion.site/2023-2e75c081bf054430ab54e7fbd8e8b7f2"
+      target="_blank"
+    >
       <img src="@/assets/icons/i-notion-light.svg" alt="notion link" />
     </a>
     <a href="https://www.churchofjesuschrist.org/?lang=kor" target="_blank">

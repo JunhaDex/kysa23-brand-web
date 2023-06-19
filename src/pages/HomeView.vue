@@ -26,7 +26,9 @@
           d="M210 0L210 510C210 510 210 401.5 58.4841 255C-93.0318 108.5 97.7159 5.33973e-07 97.7159 5.33973e-07L210 0Z"
         />
       </svg>
-      <img v-if="!isDark" class="logo" src="@/assets/images/bg-obj-day.png" alt="Brand Image" />
+      <img v-if="isDark" class="logo" src="@/assets/images/bg-obj-night.webp" alt="Brand Image" />
+      <img v-else class="logo" src="@/assets/images/bg-obj-day.png" alt="Brand Image" />
+
       <svg
         class="frag frag-btm"
         v-if="layout !== 'mo'"
@@ -261,7 +263,7 @@ $section-btw: 55px;
     margin: $header-mo auto;
     padding-top: 5%;
     box-sizing: border-box;
-    height: 30%;
+    height: 35%;
   }
 
   .contents {

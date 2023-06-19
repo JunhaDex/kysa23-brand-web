@@ -1,5 +1,12 @@
 <template>
-  <div class="top-noti">🎉 참가신청기간은 6/18~8/11 입니다. 곧 만나요! 🎉</div>
+  <div class="top-noti">
+    💵청년대회 회비 납부 관련 내용은 👉<a
+      href="https://kysa23-finance.notion.site/2023-2e75c081bf054430ab54e7fbd8e8b7f2"
+      target="_blank"
+      style="text-decoration: underline; color: white"
+      >여기에서 확인해보세요!</a
+    >👈
+  </div>
   <header :class="[`bg-${bgLevel}`, isDark ? `bg-${bgLevel}-dark` : '']" v-if="layout === 'pc'">
     <a class="navbar navbar-brand" href="/">
       <span class="logo-txt">2023 KYSA 전국 청년대회</span>
@@ -26,7 +33,9 @@
         <span class="logo-txt">KYSA2023</span>
       </a>
       <div class="coa">
-        <button class="btn btn-warning btn-sm" @click="blockMenu">참가신청</button>
+        <a class="btn btn-warning btn-sm" href="https://forms.gle/RCRMoeGBMFtAXHTR9" target="_blank"
+          >참가신청</a
+        >
       </div>
     </div>
   </header>

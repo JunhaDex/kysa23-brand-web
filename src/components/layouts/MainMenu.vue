@@ -9,10 +9,10 @@
         <div class="d-flex justify-content-center">
           <LightDark />
         </div>
-        <RouterLink to="" class="m-item" @click="blockMenu">참가신청</RouterLink>
+        <a class="m-item" href="https://forms.gle/RCRMoeGBMFtAXHTR9" target="_blank">참가신청</a>
         <RouterLink to="" class="m-item" @click="blockMenu">조 편성</RouterLink>
         <RouterLink to="" class="m-item" @click="blockMenu">대회 시간표</RouterLink>
-<!--        <a href="" target="_blank" class="m-item" @click="blockMenu"> 대회 시간표 </a>-->
+        <!--        <a href="" target="_blank" class="m-item" @click="blockMenu"> 대회 시간표 </a>-->
       </section>
       <SocialGroup />
       <section class="menu-footer">
