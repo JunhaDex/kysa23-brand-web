@@ -69,7 +69,7 @@
             <img :src="ticIcon" alt="calendar-icon" />
             <span>
               참가 등록<br />
-              <strong><em>+620</em> 명</strong>
+              <strong><em>{{ regCount }}</em> 명</strong>
             </span>
           </div>
         </section>
@@ -156,6 +156,7 @@
 import { useUIStore } from '@/stores/UI.store';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { unixDate, unixNow } from '@/utils';
+import { RegisterService } from '@/services/Register.service';
 
 const uiStore = useUIStore();
 const calIcon = computed(() => uiStore.getImageName('calendar'));
@@ -164,10 +165,13 @@ const isDark = computed(() => uiStore.colorTheme === 'dark');
 const layout = computed(() => uiStore.layout);
 const EVENT_DAY = '2023-08-25';
 const dDay = ref<string>('');
+const regCount = ref<string>('');
+const regSvc = new RegisterService();
 
 const dDayInterval = setInterval(updateDday, 30000);
 onMounted(() => {
   updateDday();
+  updateCount();
 });
 onBeforeUnmount(() => {
   clearInterval(dDayInterval);
@@ -181,6 +185,12 @@ function updateDday() {
   } else {
     dDay.value = 'Today';
   }
+}
+
+function updateCount() {
+  regSvc.getCount().then((count: number) => {
+    regCount.value = count.toString();
+  });
 }
 
 function goForm() {
