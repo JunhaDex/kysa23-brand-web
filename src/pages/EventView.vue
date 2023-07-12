@@ -20,11 +20,18 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { CouponService } from '@/services/Coupon.service';
 
 const couponId = ref<string>('');
 const isResult = ref<boolean>(false);
+const couponData = ref();
+const cpnSvc = new CouponService();
 
-function submit() {}
+async function submit() {
+  // TODO: button click debounce
+  couponData.value = await cpnSvc.searchCoupon(couponId.value);
+  isResult.value = true;
+}
 </script>
 <style lang="scss" scoped>
 main {
