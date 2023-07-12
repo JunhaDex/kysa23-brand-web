@@ -14,7 +14,7 @@
     <nav>
       <!--      <RouterLink class="me-5" to="" @click="blockMenu">참가신청</RouterLink>-->
       <RouterLink class="me-5" to="" @click="blockMenu">조 편성</RouterLink>
-      <RouterLink class="me-5" to="" @click="blockMenu">대회 시간표</RouterLink>
+      <RouterLink class="me-5" to="/event">참가 이벤트</RouterLink>
 
       <a class="me-5" href="https://forms.gle/RCRMoeGBMFtAXHTR9" target="_blank">참가신청</a>
       <!--      <RouterLink class="me-5" to="/group">조 편성</RouterLink>-->
