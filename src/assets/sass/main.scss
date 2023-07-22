@@ -1,7 +1,6 @@
 @import "custom";
 @import "mixins";
 
-
 @include font-face();
 
 //@mixin safe-area {
@@ -17,7 +16,6 @@
 //    margin: $header-pc auto 0 auto;
 //  }
 //}
-
 body, html {
   font-family: "Source Sans Pro", serif;
   height: 100vh;
@@ -170,7 +168,7 @@ body.modal-open {
   }
 }
 
-.bg-blue {
+.bg-blue-slide {
   @include desktop {
     background-size: 200% 100%;
     background-image: linear-gradient(to right, transparent 50%, $success 50%);
@@ -189,7 +187,7 @@ body.modal-open {
 
 }
 
-.bg-orange {
+.bg-orange-slide {
   @include desktop {
     background-size: 200% 100%;
     background-image: linear-gradient(to right, transparent 50%, $orange 50%);

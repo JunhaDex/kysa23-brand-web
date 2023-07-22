@@ -16,12 +16,13 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import type { ThemeType } from '@/types/UI.types';
 import { useUIStore } from '@/stores/UI.store';
 
 const uiStore = useUIStore();
 const userTheme = ref<ThemeType>();
+const currentTheme = computed(() => uiStore.colorTheme);
 const sunIcon = computed(() => uiStore.getImageName('sun'));
 const moonIcon = computed(() => uiStore.getImageName('moon'));
 onMounted(() => {
@@ -31,6 +32,17 @@ onMounted(() => {
       : 'light';
   switchTheme();
 });
+
+watch(
+  () => currentTheme.value,
+  (newVal) => {
+    console.log(newVal);
+    if (newVal) {
+      uiStore.setColorTheme(newVal);
+      document.documentElement.setAttribute('data-theme', newVal);
+    }
+  }
+);
 
 function switchTheme() {
   if (userTheme.value) {

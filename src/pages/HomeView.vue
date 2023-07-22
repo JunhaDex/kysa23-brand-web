@@ -46,12 +46,11 @@
           초대합니다! <br />
           2023 청년대회
         </h1>
-        <p>
-          2023년 청년대회를 통해, 예수 그리스도 안에서 얻는 기쁨을 찾아보세요! 웹사이트를 통해 대회
-          세부정보, 스케줄, 참가신청 등 많은 정보를 확인할 수 있습니다. 한국의 모든 청년 독신
-          성인들을 환영합니다!
-        </p>
-        <button class="btn btn-xlg btn-warning" @click="goForm">참가신청 바로가기</button>
+        <p>2023년 청년대회에 참석하는 한국의 모든 청년 독신 성인들을 환영합니다!</p>
+        <div class="d-grid gap-2 col-6" :class="{ 'mx-auto': layout === 'mo' }">
+          <button class="btn btn-lg btn-warning" @click="goForm">참가신청 바로가기</button>
+          <RouterLink class="btn btn-lg btn-purple" to="/event">이벤트 당첨자</RouterLink>
+        </div>
       </section>
     </article>
     <div class="info-wrap">
@@ -69,7 +68,9 @@
             <img :src="ticIcon" alt="calendar-icon" />
             <span>
               참가 등록<br />
-              <strong><em>{{ regCount }}</em> 명</strong>
+              <strong
+                ><em>{{ regCount }}</em> 명</strong
+              >
             </span>
           </div>
         </section>
@@ -99,7 +100,7 @@
       />
     </svg>
     <article class="boxes-home">
-      <div class="info-box bg-blue" :class="`info-box-${isDark ? 'dark' : 'light'}`">
+      <div class="info-box bg-blue-slide" :class="`info-box-${isDark ? 'dark' : 'light'}`">
         <img src="@/assets/images/location-info.png" alt="location" />
         <div class="box-contents">
           <h3 v-if="layout !== 'mo'">대회 일시 및 장소</h3>
@@ -117,7 +118,7 @@
           </a>
         </div>
       </div>
-      <div class="info-box bg-blue" :class="`info-box-${isDark ? 'dark' : 'light'}`">
+      <div class="info-box bg-blue-slide" :class="`info-box-${isDark ? 'dark' : 'light'}`">
         <div class="box-contents">
           <h3 v-if="layout === 'mo'">
             대회 일정표 <br />
@@ -129,7 +130,7 @@
         </div>
         <img src="@/assets/images/calendar-info.png" alt="location" />
       </div>
-      <div class="info-box bg-orange" :class="`info-box-${isDark ? 'dark' : 'light'}`">
+      <div class="info-box bg-orange-slide" :class="`info-box-${isDark ? 'dark' : 'light'}`">
         <img src="@/assets/images/discord-info.png" alt="location" />
         <div class="box-contents">
           <h3>디스코드 참여하기</h3>
@@ -138,7 +139,7 @@
         </div>
       </div>
       <div
-        class="info-box info-box-flex bg-orange"
+        class="info-box info-box-flex bg-orange-slide"
         :class="`info-box-${isDark ? 'dark' : 'light'}`"
       >
         <div class="box-contents">

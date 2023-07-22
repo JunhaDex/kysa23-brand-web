@@ -3,6 +3,12 @@
 @import "variables";
 ////
 @import "~bootstrap/scss/variables";
+
+$custom-colors: (
+        "purple": $purple,
+        "orange": $orange
+);
+$theme-colors: map-merge($theme-colors, $custom-colors);
 // Map Override
 ////
 @import "~bootstrap/scss/maps";
@@ -17,6 +23,7 @@
 @import "~bootstrap/scss/forms";
 ////
 @import "~bootstrap/scss/utilities/api";
+
 
 .form-control {
   box-sizing: border-box;
