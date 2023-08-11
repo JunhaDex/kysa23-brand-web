@@ -1,0 +1,35 @@
+@import "~bootstrap/scss/functions";
+// Variable Override
+@import "variables";
+////
+@import "~bootstrap/scss/variables";
+
+$custom-colors: (
+        "purple": $purple,
+        "orange": $orange
+);
+$theme-colors: map-merge($theme-colors, $custom-colors);
+// Map Override
+////
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/utilities";
+// Include Parts
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/forms";
+////
+@import "~bootstrap/scss/utilities/api";
+
+
+.form-control {
+  box-sizing: border-box;
+}
+
+.form-check-input {
+  width: 1rem;
+  height: 1rem;
+}

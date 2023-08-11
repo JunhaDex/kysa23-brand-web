@@ -1,0 +1,15 @@
+@import 'variables';
+
+html[data-theme="light"] {
+  --background-color: #FFFFFF;
+  --background-theme-color: #87A68E;
+  --text-color: #000;
+  --color-a: #{$primary};
+}
+
+html[data-theme="dark"] {
+  --background-color: #202020;
+  --background-theme-color: #022535;
+  --text-color: #fff;
+  --color-a: #{$warning};
+}

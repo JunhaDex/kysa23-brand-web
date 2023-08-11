@@ -1,0 +1,207 @@
+@import "custom";
+@import "mixins";
+
+@include font-face();
+
+//@mixin safe-area {
+//  @include mobile {
+//    margin: $header-mo auto 0 auto;
+//  }
+//  @include tablet {
+//    margin: $header-mo auto 0 auto;
+//
+//  }
+//  @include desktop {
+//    max-width: $pc-max;
+//    margin: $header-pc auto 0 auto;
+//  }
+//}
+body, html {
+  font-family: "Source Sans Pro", serif;
+  height: 100vh;
+  @include mobile {
+    font-size: 14px;
+  }
+  @include tablet {
+    font-size: 18px;
+  }
+  @include desktop {
+    font-size: 22px;
+  }
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  position: relative;
+  margin: 0;
+  min-width: $pc-min;
+
+  #app {
+    width: 100%;
+
+    main {
+      min-height: calc(100vh - $header-pc);
+      width: 100%;
+      @include mobile {
+        min-height: calc(100vh - $header-mo);
+      }
+    }
+
+    article {
+      @include desktop {
+        max-width: $pc-max;
+        margin: 0 auto;
+      }
+      @include mobile {
+        min-width: $pc-min;
+      }
+    }
+
+    footer {
+      margin: 0 auto;
+    }
+  }
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.btn-xlg {
+  font-size: $font-lg;
+  width: 170px;
+  height: 50px;
+  @include desktop {
+    width: 270px;
+    height: 75px;
+  }
+  @include tablet {
+    width: 220px;
+    height: 60px;
+  }
+}
+
+.close {
+  display: inline-block;
+  @include icon(close);
+  width: 36px;
+  height: 36px;
+}
+
+.info-box {
+  box-sizing: border-box;
+  width: 22%;
+  height: 720px;
+  border-radius: 0.4rem;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    z-index: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    .loc:before {
+      display: inline-block;
+      content: '';
+      background-image: url('@/assets/icons/i-loc.svg');
+      background-size: cover;
+      width: 0.8rem;
+      height: 0.8rem;
+      margin-right: 6px;
+    }
+
+    .cal:before {
+      display: inline-block;
+      content: '';
+      background-image: url('@/assets/icons/i-cal.svg');
+      background-size: cover;
+      width: 0.8rem;
+      height: 0.8rem;
+      margin-right: 6px;
+    }
+  }
+
+  &-flex {
+    display: flex;
+    align-content: center;
+  }
+
+  .box-contents {
+    padding: 36px;
+    box-sizing: border-box;
+    margin: auto 0;
+    flex: 1
+  }
+
+  @include tablet {
+    width: 85%;
+    margin-bottom: 26px;
+    height: 350px;
+    display: flex;
+    justify-content: space-between;
+    img {
+      width: 43%;
+    }
+  }
+  @include mobile {
+    width: 87%;
+    margin-bottom: 26px;
+    height: 130px;
+    display: flex;
+    justify-content: space-between;
+    img {
+      width: 40%;
+    }
+  }
+
+  &-dark {
+    box-shadow: inset 3px 5px 10px #111;
+  }
+
+  &-light {
+    box-shadow: 3px 5px 10px #ccc;
+  }
+}
+
+.bg-blue-slide {
+  @include desktop {
+    background-size: 200% 100%;
+    background-image: linear-gradient(to right, transparent 50%, $success 50%);
+    transition: color .3s, background-position .3s;
+    &:hover {
+      color: $light;
+      background-position: 100% 0;
+    }
+  }
+  @include mobile {
+    transition: background-color .3s;
+    &:hover {
+      background-color: $success;
+    }
+  }
+
+}
+
+.bg-orange-slide {
+  @include desktop {
+    background-size: 200% 100%;
+    background-image: linear-gradient(to right, transparent 50%, $orange 50%);
+    transition: color .3s, background-position .3s;
+
+    &:hover {
+      color: $light;
+      background-position: 100% 0;
+    }
+  }
+  @include mobile {
+    transition: background-color .3s;
+    &:hover {
+      background-color: $orange;
+    }
+  }
+}
