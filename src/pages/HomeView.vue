@@ -47,13 +47,12 @@
           2023 청년대회
         </h1>
         <p>
-          2023년 청년대회에 참가신청이 곧 마감됩니다! <br />
-          편의를 위해 참가기간을 12시간 연장하여,<br />
-          <b>8월 12일 정오(오후 12:00)까지</b><br />
-          참가신청이 가능합니다.
+          2023년 청년대회에 참가신청이 마감되었습니다! <br />
+          여러분의 많은 참여에 감사드립니다. <br />
+          참가비 납부는 아래 링크를 확인하시기 바랍니다.
         </p>
         <div class="d-grid gap-2 col-6" :class="{ 'mx-auto': layout === 'mo' }">
-          <button class="btn btn-lg btn-warning" @click="goForm">참가신청 바로가기</button>
+          <button class="btn btn-lg btn-primary" @click="goForm">대회비 납부 방법</button>
           <RouterLink class="btn btn-lg btn-purple" to="/event">이벤트 당첨자</RouterLink>
         </div>
       </section>
@@ -89,7 +88,7 @@
             -앨마서 31:38-
           </p>
         </section>
-        <button class="btn btn-lg btn-warning" @click="goForm">참가신청 바로가기</button>
+        <button class="btn btn-lg btn-outline-warning" @click="goForm" disabled>참가신청 바로가기</button>
       </article>
     </div>
     <svg
@@ -150,10 +149,9 @@
         :class="`info-box-${isDark ? 'dark' : 'light'}`"
       >
         <div class="box-contents" @click="goForm">
-          <h3 :class="layout === 'mo' ? 'text-center' : ''">참가신청 바로가기</h3>
-          <p v-if="layout !== 'mo'">지금 바로 참가신청하고 얼리버드 할인혜택 받기!</p>
-          <button v-if="layout !== 'mo'" class="btn btn-warning sm" @click="goForm">
-            참가신청
+          <h3 :class="layout === 'mo' ? 'text-center' : ''">대회비 납부 안내</h3>
+          <button v-if="layout !== 'mo'" class="btn btn-primary sm" @click="goForm">
+            납부 안내
           </button>
         </div>
       </div>
@@ -202,7 +200,7 @@ function updateCount() {
 }
 
 function goForm() {
-  window.open('https://forms.gle/RCRMoeGBMFtAXHTR9', '_blank');
+  window.open('https://kysa23-finance.notion.site/2023-2e75c081bf054430ab54e7fbd8e8b7f2', '_blank');
 }
 
 function goMap() {
@@ -286,10 +284,13 @@ $section-btw: 55px;
 
   .logo {
     display: block;
-    margin: $header-mo auto;
+    margin: $header-mo auto 0 auto;
     padding-top: 5%;
     box-sizing: border-box;
     height: 35%;
+    @include desktop {
+      margin-bottom: $header-mo;
+    }
   }
 
   .contents {
@@ -305,6 +306,7 @@ $section-btw: 55px;
 
     h1 {
       font-size: 3.2rem;
+      margin-top: 0;
       margin-bottom: 0;
     }
 

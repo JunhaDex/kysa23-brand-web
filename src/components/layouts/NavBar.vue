@@ -1,12 +1,4 @@
 <template>
-  <div class="top-noti">
-    💵청년대회 회비 납부 관련 내용은 👉<a
-      href="https://kysa23-finance.notion.site/2023-2e75c081bf054430ab54e7fbd8e8b7f2"
-      target="_blank"
-      style="text-decoration: underline; color: white"
-      >여기에서 확인해보세요!</a
-    >👈
-  </div>
   <header :class="[`bg-${bgLevel}`, isDark ? `bg-${bgLevel}-dark` : '']" v-if="layout === 'pc'">
     <a class="navbar navbar-brand" href="/">
       <span class="logo-txt">2023 KYSA 전국 청년대회</span>
@@ -16,7 +8,7 @@
       <RouterLink class="me-5" to="" @click="blockMenu">조 편성</RouterLink>
       <RouterLink class="me-5" to="/event">참가 이벤트</RouterLink>
 
-      <a class="me-5" href="https://forms.gle/RCRMoeGBMFtAXHTR9" target="_blank">참가신청</a>
+      <a class="me-5" href="https://kysa23-finance.notion.site/2023-2e75c081bf054430ab54e7fbd8e8b7f2" target="_blank">대회비 납부</a>
       <!--      <RouterLink class="me-5" to="/group">조 편성</RouterLink>-->
       <!--      <a href="https://about.google" target="_blank">대회 시간표</a>-->
     </nav>
@@ -33,8 +25,8 @@
         <span class="logo-txt">KYSA2023</span>
       </a>
       <div class="coa">
-        <a class="btn btn-warning btn-sm" href="https://forms.gle/RCRMoeGBMFtAXHTR9" target="_blank"
-          >참가신청</a
+        <a class="btn btn-primary btn-sm" href="https://kysa23-finance.notion.site/2023-2e75c081bf054430ab54e7fbd8e8b7f2" target="_blank"
+          >납부안내</a
         >
       </div>
     </div>
@@ -123,18 +115,6 @@ $header-item-width: 25%;
   }
 }
 
-.top-noti {
-  position: fixed;
-  width: 100%;
-  z-index: 6;
-  text-align: center;
-  background-color: $info;
-  box-sizing: border-box;
-  @include mobile {
-    top: 50px;
-  }
-}
-
 .logo-txt {
   color: var(--text-color);
   font-weight: 800;
@@ -152,9 +132,6 @@ header {
   min-width: $pc-min;
   height: $header-mo;
   box-sizing: border-box;
-  @include desktop {
-    top: 29px;
-  }
 
   .navbar-brand {
     width: $header-item-width;
