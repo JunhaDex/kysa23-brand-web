@@ -56,7 +56,7 @@
 <script lang="ts" setup>
 import ToastAlert from '@/components/displays/ToastAlert.vue';
 import { ref } from 'vue';
-import { ToastItem } from '@/types/UI.types';
+import type { ToastItem } from '@/types/UI.types';
 
 const showToast = ref<boolean>(false);
 const toastItem = ref<ToastItem>({
