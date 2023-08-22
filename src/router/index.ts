@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '@/pages/HomeView.vue';
 import GuideView from '@/pages/GuideView.vue';
-import EventView from '@/pages/EventView.vue';
+import InfoView from '@/pages/InfoView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,7 +14,12 @@ const router = createRouter({
     {
       path: '/event',
       name: 'Event',
-      component: EventView,
+      component: () => import('@/pages/EventView.vue'),
+    },
+    {
+      path: '/info',
+      name: 'Info',
+      component: InfoView,
     },
     {
       path: '/guide',

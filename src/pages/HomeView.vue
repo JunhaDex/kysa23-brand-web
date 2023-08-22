@@ -47,13 +47,12 @@
           2023 청년대회
         </h1>
         <p>
-          2023년 청년대회에 참가신청이 마감되었습니다! <br />
+          2023년 청년대회가 곧 시작됩니다! <br />
           여러분의 많은 참여에 감사드립니다. <br />
-          참가비 납부는 아래 링크를 확인하시기 바랍니다.
+          대회지에서 만나요!
         </p>
         <div class="d-grid gap-2 col-6" :class="{ 'mx-auto': layout === 'mo' }">
-          <button class="btn btn-lg btn-primary" @click="goForm">대회비 납부 방법</button>
-          <RouterLink class="btn btn-lg btn-purple" to="/event">이벤트 당첨자</RouterLink>
+          <RouterLink class="btn btn-lg btn-purple" to="/info">대회 정보 확인</RouterLink>
         </div>
       </section>
     </article>

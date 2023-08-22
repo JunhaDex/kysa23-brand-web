@@ -4,7 +4,7 @@ export class CouponService {
   private readonly coupon;
 
   constructor() {
-    this.coupon = axios.create({ baseURL: 'https://api.kysa.page/' });
+    this.coupon = axios.create({ basetURL: 'https://api.kysa.page/' });
   }
 
   async searchCoupon(serial: string): Promise<{ code: string; rank: string }> {
