@@ -18,7 +18,14 @@
           </div>
           <div class="item">
             <label>대회 시간표</label>
-            <button class="btn btn-outline-secondary btn-lg w-100" @click="blockMenu" disabled>
+            <button
+              class="btn btn-info btn-lg w-100"
+              @click="
+                linkTo(
+                  'https://firebasestorage.googleapis.com/v0/b/kysa23-project.appspot.com/o/public%2F%E1%84%83%E1%85%A2%E1%84%92%E1%85%AC%20%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%91%E1%85%AD.png?alt=media&token=d23c1494-08bd-464a-ac5d-e4aac37593db'
+                )
+              "
+            >
               대회 시간표 보기
             </button>
           </div>
