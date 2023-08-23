@@ -5,10 +5,15 @@
     </a>
     <nav>
       <!--      <RouterLink class="me-5" to="" @click="blockMenu">참가신청</RouterLink>-->
-      <RouterLink class="me-5" to="" @click="blockMenu">조 편성</RouterLink>
+      <RouterLink class="me-5" to="/info">조 편성</RouterLink>
       <RouterLink class="me-5" to="/event">참가 이벤트</RouterLink>
 
-      <a class="me-5" href="https://kysa23-finance.notion.site/2023-2e75c081bf054430ab54e7fbd8e8b7f2" target="_blank">대회비 납부</a>
+      <a
+        class="me-5"
+        href="https://kysa23-finance.notion.site/2023-2e75c081bf054430ab54e7fbd8e8b7f2"
+        target="_blank"
+        >대회비 납부</a
+      >
       <!--      <RouterLink class="me-5" to="/group">조 편성</RouterLink>-->
       <!--      <a href="https://about.google" target="_blank">대회 시간표</a>-->
     </nav>
@@ -25,7 +30,10 @@
         <span class="logo-txt">KYSA2023</span>
       </a>
       <div class="coa">
-        <a class="btn btn-primary btn-sm" href="https://kysa23-finance.notion.site/2023-2e75c081bf054430ab54e7fbd8e8b7f2" target="_blank"
+        <a
+          class="btn btn-primary btn-sm"
+          href="https://kysa23-finance.notion.site/2023-2e75c081bf054430ab54e7fbd8e8b7f2"
+          target="_blank"
           >납부안내</a
         >
       </div>

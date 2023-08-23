@@ -9,9 +9,14 @@
         <div class="d-flex justify-content-center">
           <LightDark />
         </div>
-        <a class="m-item" href="https://kysa23-finance.notion.site/2023-2e75c081bf054430ab54e7fbd8e8b7f2" target="_blank">대회비 납부</a>
+        <a
+          class="m-item"
+          href="https://kysa23-finance.notion.site/2023-2e75c081bf054430ab54e7fbd8e8b7f2"
+          target="_blank"
+          >대회비 납부</a
+        >
         <RouterLink to="/event" class="m-item" @click="closeMenu">참가 이벤트</RouterLink>
-        <RouterLink to="" class="m-item" @click="blockMenu">조 편성</RouterLink>
+        <RouterLink to="/info" class="m-item">조 편성</RouterLink>
         <!--        <a href="" target="_blank" class="m-item" @click="blockMenu"> 대회 시간표 </a>-->
       </section>
       <SocialGroup />
