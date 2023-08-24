@@ -12,7 +12,10 @@
           </div>
           <div class="item">
             <label>입소식</label>
-            <button class="btn btn-outline-secondary btn-lg w-100" @click="blockMenu" disabled>
+            <button
+              class="btn btn-info btn-lg w-100"
+              @click="linkTo('https://forms.gle/4x6dT1Zi3eaWgAbd9')"
+            >
               대회 체크인
             </button>
           </div>
